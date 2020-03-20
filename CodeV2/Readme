@@ -2,7 +2,7 @@ In this version the next feature were added.
 
   -Ask for a Limit of puff in the active modes. 
   -Decide which vape will do the priming. 
-  -which will is active?
+  -which vape is active?
   -Ask if the Time OUT feature will be disable.(Disable the feature that cancel the seccion when the animal is not active after X time)
   -Add passive expore log(example: setting, start time). 
   -Implement RTC
