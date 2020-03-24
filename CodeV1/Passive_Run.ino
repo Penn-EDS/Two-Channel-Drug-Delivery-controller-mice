@@ -10,6 +10,14 @@ lcd.print("Total # of Puff:");
 lcd.print(PuffMaxQuantity);
 LCDSetCursorPosition(1,4);
 lcd.print("press B to cancel");
+
+// insert here rct date
+Serial.println("Schedule: Passive");
+Serial.println((String)"Puff Length(miliseconds): "+Puffmiliseconds);
+Serial.println((String)"Puff Interval(m:s): "+PuffIntmin+":"+PuffIntsec);
+Serial.println((String)"Max # Puff: "+ PuffMaxQuantity);
+
+
 drug=0;
 Numpuffcounter=1;
 delay(300);
@@ -24,7 +32,7 @@ ButtonB=digitalRead(BB);
 puffIntinmiliseconds=(PuffIntmin*60*1000)+(PuffIntsec*1000);
 
 
-while(Numpuffcounter <= PuffMaxQuantity){   //  vaping code
+while(Numpuffcounter <= PuffMaxQuantity){   //  passive vaping code
   drug=1;
   LCDclear();
   LCDHome();

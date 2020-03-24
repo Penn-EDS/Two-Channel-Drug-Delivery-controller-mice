@@ -59,9 +59,7 @@ void PuffLengthselect() {
     }
     ButtonC = digitalRead(BC);
   }
-#ifdef DEBUG
-  Serial.println((String)"Vape Time(ms):"+ Puffmiliseconds); /* For Debugging */
-#endif 
+
 
 }
 
@@ -336,11 +334,7 @@ void checkbuttonDstate() {
     }
 
     if (ButtonDstate == HIGH) {
-      
-      //LCDSetCursorPosition(20, 2);
       LCDSetCursorPosition(14, 2);
-      
     }
-
   }
 }

@@ -74,6 +74,12 @@ unsigned long puffIntcounter=0;
 
 // Active mode variables with default values
 int primingpuff = 1;            //  1 YES   0 NO
+int whichvapepriming = 1;       // if priming yes, Which one?
+int vapepriming=0;              // variable part of the which priming loop
+int LEDpriming=0;               // variable part of the which priming loop
+int LEDstatuspriming=0;         // variable part of the which priming loop
+
+int whichvapeactive=1;
 
 unsigned long Postresponsetimeout=5;       // Seconds
 unsigned long Postresponsetimeoutmilis=0;   // miliseconds 
@@ -91,6 +97,7 @@ unsigned long milisleft = 0;
 float minutesleft = 0.0; 
 unsigned long previousSeccionTimeout=0;
 
+int ifSessionTimeOut=1;
 unsigned long SessionTimeOutmin = 3;
 unsigned long SessionTimeOutsec = 0;
 unsigned long SessionTimeOutmilis = 0;
@@ -186,17 +193,15 @@ void loop() {
     //
     while(1){
       
-      //ButtonA = digitalRead(BA);
-     // ButtonB = digitalRead(BB);
-
+      
       // PASSIVE LOOP
       if ((ButtonA = digitalRead(BA))==LOW){  
         Passreview:
           delay(200);
           PuffLengthselect();
-          delay(150);
+          delay(200);
           PuffIntSelect();
-          delay(150);
+          delay(200);
           PuffMaxNum();
         //REVIEW PASSIVE PARAMETERS OR RUN
           LCDclear();
@@ -204,11 +209,10 @@ void loop() {
           lcd.print(" Press: A to Review ");
           lcd.print(" Press: B to Start ");
           while(1){
-              delay(100);
-              // ButtonA = digitalRead(BA);
-              // ButtonB = digitalRead(BB);
+              delay(200);
+              
               if ( (ButtonA=digitalRead(BA)) == LOW){
-                  delay(100);
+                  delay(200);
                   goto Passreview;
               }
               if ( (ButtonB = digitalRead(BB)) == LOW){   
@@ -224,6 +228,9 @@ void loop() {
 //****** ACTIVE LOOP
       if((ButtonB = digitalRead(BB))==LOW){
          Activereview:
+
+           whichvapeActive();
+           delay(200);
            Primingpuff();
            delay(200);
            PuffLengthselect();
@@ -234,6 +241,9 @@ void loop() {
            delay(200);
            sessionLength();
            delay(200);
+           PuffMaxNum();
+           delay(200);
+           
            
            //Fixed Ratio or progressive Ratio
            
@@ -248,8 +258,7 @@ void loop() {
           
            while(1){
             
-               //ButtonA = digitalRead(BA);
-               //ButtonB = digitalRead(BB);
+             
                
             //Fixed Ratio
              if((ButtonA=digitalRead(BA)) == LOW){
@@ -263,9 +272,8 @@ void loop() {
                 lcd.print(" Press: A to Review ");
                 lcd.print(" Press: B to Start ");
                 while(1){
-                   delay(100);
-                   // ButtonA = digitalRead(BA);
-                   // ButtonB = digitalRead(BB);
+                   delay(200);
+                   
                  if ( (ButtonA=digitalRead(BA)) == LOW){
                      delay(200);
                     //review Active parameters
@@ -286,8 +294,9 @@ void loop() {
 
             //Progressive Ratio
              if((ButtonB = digitalRead(BB)) == LOW){
-
-                SessionTimeOut();    // session ended after X time of animal inactivity. Asking for that time. 
+                  delay(100);
+                IFSessionTimeOut();  // YES or NO SessionTimeOut?  IF(YES): session ended after X time of animal inactivity. Asking for that time. IF(N0): SessionTimeOut will be bigger than Seccion Lenght. 
+                //SessionTimeOut();    // session ended after X time of animal inactivity. Asking for that time. 
                 LCDclear();
                 LCDHome();
                 lcd.print ("Press:");
@@ -297,7 +306,7 @@ void loop() {
                 lcd.print("   B for Geometric ");
 
                 while(1){
-                  delay(100);
+                  delay(200);
 
                   // Arithmetic
                   if ( (ButtonA=digitalRead(BA)) == LOW){
@@ -310,7 +319,7 @@ void loop() {
                       lcd.print(" Press: A to Review ");
                       lcd.print(" Press: B to Start ");
                       while(1){
-                       delay(100);
+                       delay(200);
                    
                       if ( (ButtonA=digitalRead(BA)) == LOW){
                           delay(200);
@@ -338,7 +347,7 @@ void loop() {
                       lcd.print(" Press: A to Review ");
                       lcd.print(" Press: B to Start ");
                       while(1){
-                       delay(100);
+                       delay(200);
                    
                       if ( (ButtonA=digitalRead(BA)) == LOW){
                           delay(200);

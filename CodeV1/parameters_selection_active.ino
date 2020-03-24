@@ -41,7 +41,7 @@ void Primingpuff(){
       lcd.print("PRESS: A(Y) , B(N)");
       LCDSetCursorPosition(1,4);
       lcd.print("PRESS C for OK");
-    }
+      }
     if ( ButtonB == LOW){
       LCDclear();            
       LCDHome();
@@ -54,15 +54,13 @@ void Primingpuff(){
       LCDSetCursorPosition(1,4);
       lcd.print("PRESS C for OK");
     
-   }
+     }
      ButtonC = digitalRead(BC);
   }
-// if(primingpuff==1){
-//  Serial.println("Priming puff: Y");
-// }
-// else {
-//  Serial.println("Priming puff: N");
-// }
+
+ if (primingpuff==1){
+    Whichvapepriming();
+  }
 }
 
 
@@ -125,7 +123,7 @@ void PostResponseTimeOut(){
   }
   
   Postresponsetimeoutmilis = Postresponsetimeout*1000;
-  //Serial.println((String)"TOD(s):"+ Postresponsetimeout);
+  
 }
 
 
@@ -139,7 +137,6 @@ void CueLight(){
     LCDSetCursorPosition(2,2);
     lcd.print(" LED1:");
     lcd.print("ON");
-    LED1status=1;
     LCDSetCursorPosition(1,3);
     lcd.print("PRESS: A(ON) , B(OFF)");
     LCDSetCursorPosition(1,4);
@@ -152,7 +149,6 @@ void CueLight(){
       LCDSetCursorPosition(2,2);
       lcd.print(" LED1:");
       lcd.print("OFF");
-      LED1status=0;
       LCDSetCursorPosition(1,3);
       lcd.print("PRESS: A(ON) , B(OFF)");
       LCDSetCursorPosition(1,4);
@@ -193,12 +189,7 @@ void CueLight(){
    }
      ButtonC = digitalRead(BC);
   }
-//  if(LED1status==1){
-//  Serial.println("Cue Light1(LED1): Y");
-// }
-// else {
-//  Serial.println("Cue Light1(LED1): N");
-// }
+
 delay(300);
 
  //LED2
@@ -263,12 +254,7 @@ delay(300);
    }
      ButtonC = digitalRead(BC);
   }
-//if(LED2status==1){
-//  Serial.println("Cue Light2(LED2): Y");
-// }
-// else {
-//  Serial.println("Cue Light2(LED2): N");
-// }
+
 
 }
 
@@ -485,8 +471,9 @@ void sessionLength(){
       }
     }
   }
+  
 Here:
-  //Serial.println((String)"Session Duration(h:m): "+SessionLengthHours+":"+SessionLengthMinutes);
+SessionLengthInMiliseconds = (SessionLengthMinutes*60000) + (SessionLengthHours*3600000);
   delay(100);
 }
 
@@ -540,7 +527,7 @@ void FixedResponseRatio(){
     }
     ButtonC = digitalRead(BC);
   }
-  //Serial.println((String)"Ratio: Fixed Ratio "+fixedresponseratio);
+  
 }
 
 
@@ -561,6 +548,7 @@ void SessionTimeOut(){
   lcd.print("PRESS: A(+) B(-)");
   LCDSetCursorPosition(1, 4);
   lcd.print("D(Min or SEC) C(OK)");
+  delay(200);
 
   ButtonC = digitalRead(BC);
   while ( ButtonC == HIGH) { // select session time out 
@@ -572,7 +560,7 @@ void SessionTimeOut(){
 
     checkbuttonDstate();
     while (ButtonDstate == LOW) { // selecting session time out minutes
-      delay(90);
+      delay(100);
       ButtonA = digitalRead(BA);
       ButtonB = digitalRead(BB);
       checkbuttonDstate();
@@ -757,14 +745,14 @@ void SessionTimeOut(){
       }
     }
   }
+  
 Here:
-
 SessionTimeOutmilis = (SessionTimeOutmin*60000) + (SessionTimeOutsec*1000);
-  delay(1);
+  delay(100);
 }
 
 
-void ArithmeticMultiplier(){ /////
+void ArithmeticMultiplier(){ 
   
     LCDclear();            
     LCDHome();
@@ -811,4 +799,178 @@ void ArithmeticMultiplier(){ /////
      ButtonC = digitalRead(BC);
   }
   
+}
+
+void Whichvapepriming(){
+  delay(200);
+    LCDclear();            
+    LCDHome();
+    lcd.print("which Vape priming?");
+    LCDSetCursorPosition(2,2);
+    lcd.print((String)"Vaporizer:"+ whichvapepriming);
+    LCDSetCursorPosition(1,3);
+    lcd.print("PRESS D For 1 or 2");
+    LCDSetCursorPosition(1,4);
+    lcd.print("PRESS C for OK");
+    
+   //ButtonC = digitalRead(BC);
+  while ( digitalRead(BC)==HIGH){ 
+    delay(200);
+    //ButtonD = digitalRead(BD);
+  if (digitalRead(BD) == LOW) {
+    //delay(200);
+    ButtonDstate = !ButtonDstate; //state start in 0
+    if (ButtonDstate == LOW) {
+      whichvapepriming=1;
+      vapepriming=vape1;
+      LEDpriming=LED1;
+      LEDstatuspriming=LED1status;
+      LCDclear();            
+      LCDHome();
+      lcd.print("which Vape priming?");
+      LCDSetCursorPosition(2,2);
+      lcd.print((String)"Vaporizer:"+ whichvapepriming);
+      LCDSetCursorPosition(1,3);
+      lcd.print("PRESS D For 1 or 2");
+      LCDSetCursorPosition(1,4);
+      lcd.print("PRESS C for OK");
+      }
+
+    if (ButtonDstate == HIGH) {
+      whichvapepriming=2;
+      vapepriming=vape2;
+      LEDpriming=LED2;
+      LEDstatuspriming=LED2status;
+      LCDclear();            
+      LCDHome();
+      lcd.print("which Vape priming?");
+      LCDSetCursorPosition(2,2);
+      lcd.print((String)"Vaporizer:"+ whichvapepriming);
+      LCDSetCursorPosition(1,3);
+      lcd.print("PRESS D For 1 or 2");
+      LCDSetCursorPosition(1,4);
+      lcd.print("PRESS C for OK");
+      }
+      
+    }    
+  }
+}
+
+void whichvapeActive(){
+    delay(200);
+    LCDclear();            
+    LCDHome();
+    lcd.print("which Vape Active?");
+    LCDSetCursorPosition(2,2);
+    lcd.print((String)"Vaporizer:"+ whichvapeactive);
+    LCDSetCursorPosition(1,3);
+    lcd.print("PRESS D For 1 or 2");
+    LCDSetCursorPosition(1,4);
+    lcd.print("PRESS C for OK");
+    
+   
+  while ( digitalRead(BC)==HIGH){ 
+    delay(200);
+   
+  if (digitalRead(BD) == LOW) {
+    //delay(200);
+    ButtonDstate = !ButtonDstate; // D state start in 0
+    if (ButtonDstate == LOW) {
+      whichvapeactive=1;
+      LCDclear();            
+      LCDHome();
+      lcd.print("which Vape Active?");
+      LCDSetCursorPosition(2,2);
+      lcd.print((String)"Vaporizer:"+ whichvapeactive);
+      LCDSetCursorPosition(1,3);
+      lcd.print("PRESS D For 1 or 2");
+      LCDSetCursorPosition(1,4);
+      lcd.print("PRESS C for OK");
+      }
+
+    if (ButtonDstate == HIGH) {
+      whichvapeactive=2;
+      LCDclear();            
+      LCDHome();
+      lcd.print("which Vape Active?");
+      LCDSetCursorPosition(2,2);
+      lcd.print((String)"Vaporizer:"+ whichvapeactive);
+      LCDSetCursorPosition(1,3);
+      lcd.print("PRESS D For 1 or 2");
+      LCDSetCursorPosition(1,4);
+      lcd.print("PRESS C for OK");
+      }
+      
+    }    
+  }
+  
+}
+
+void IFSessionTimeOut(){
+  delay(200);
+  if (ifSessionTimeOut==1){
+    LCDclear();            
+    LCDHome();
+    lcd.print("Seccion Time Out?");
+    LCDSetCursorPosition(2,2);
+    lcd.print("YES");
+    ifSessionTimeOut=1;
+    LCDSetCursorPosition(1,3);
+    lcd.print("PRESS: A(Y) , B(N)");
+    LCDSetCursorPosition(1,4);
+    lcd.print("PRESS C for OK");
+   }
+  if (ifSessionTimeOut==0){
+      LCDclear();            
+      LCDHome();
+      lcd.print("Seccion Time Out?");
+      LCDSetCursorPosition(2,2);
+      lcd.print("NO");
+      ifSessionTimeOut=0;
+      LCDSetCursorPosition(1,3);
+      lcd.print("PRESS: A(Y) , B(N)");
+      LCDSetCursorPosition(1,4);
+      lcd.print("PRESS C for OK");
+  }
+    
+   ButtonC = digitalRead(BC);
+  while ( ButtonC==HIGH){ 
+    delay(90);
+    ButtonA = digitalRead(BA);
+    ButtonB = digitalRead(BB);
+    if ( ButtonA == LOW){
+      LCDclear();            
+      LCDHome();
+      lcd.print("Seccion Time Out?");
+      LCDSetCursorPosition(2,2);
+      lcd.print("YES");
+      ifSessionTimeOut=1;
+      LCDSetCursorPosition(1,3);
+      lcd.print("PRESS: A(Y) , B(N)");
+      LCDSetCursorPosition(1,4);
+      lcd.print("PRESS C for OK");
+      }
+    if ( ButtonB == LOW){
+      LCDclear();            
+      LCDHome();
+      lcd.print("Seccion Time Out?");
+      LCDSetCursorPosition(2,2);
+      lcd.print("NO");
+      ifSessionTimeOut=0;
+      LCDSetCursorPosition(1,3);
+      lcd.print("PRESS: A(Y) , B(N)");
+      LCDSetCursorPosition(1,4);
+      lcd.print("PRESS C for OK");
+    
+     }
+     ButtonC = digitalRead(BC);
+  }
+
+ if (ifSessionTimeOut==1){
+    SessionTimeOut();
+    }
+    
+   else{
+    SessionTimeOutmilis=SessionLengthInMiliseconds + 15000;
+     }
 }
