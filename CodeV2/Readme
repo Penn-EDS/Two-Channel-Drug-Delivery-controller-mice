@@ -5,5 +5,5 @@ In this version the next feature were added.
   -which vape is active?
   -Ask if the Time OUT feature will be disable.(Disable the feature that cancel the seccion when the animal is not active after X time)
   -Add passive expore log(example: setting, start time). 
-  -Implement RTC
+  -Implement RTC 
   -End seccion for the actives mode and go to start screen.
