@@ -106,6 +106,7 @@ drug=1;
    LCDSetCursorPosition(1,2);
    lcd.print("     CANCELLED     ");
    Serial.println("THIS SECCION WAS CANCELLED");
+   delay(3000);
   }
   
 }
