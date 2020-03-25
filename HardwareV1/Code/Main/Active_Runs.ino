@@ -1,4 +1,5 @@
 void FixedRatioStart(){
+  delay(300);
   drug=0;
   Numpuffcounter=1;
   LCDclear();
@@ -114,6 +115,7 @@ drug=1;
 
 
 void ArithmeticRatioStart(){
+  delay(300);
   drug=0;
   Numpuffcounter=1;
   LCDclear();
@@ -251,6 +253,7 @@ drug=1;
 
 
 void GeometricRatioStart(){
+  delay(300);
   drug=0;
   Numpuffcounter=1;
   LCDclear();
