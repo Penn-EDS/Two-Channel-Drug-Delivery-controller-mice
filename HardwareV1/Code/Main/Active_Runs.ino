@@ -122,8 +122,8 @@ void ArithmeticRatioStart(){
   LCDSetCursorPosition(1,2);
   lcd.print("Minutes Left:");
   LCDSetCursorPosition(1,4);
-  //lcd.print((String)"W1="+ArithmeticConstant+" W2="+ArithmeticConstant);
-  lcd.print("TO CANCEL HOLD B");
+  lcd.print((String)"W1="+ArithmeticConstant+" W2="+ArithmeticConstant);
+  
   
   // insert here rct date
   Serial.println("Schedule: Arithmetic Ratio");
@@ -189,10 +189,10 @@ drug=1;
       Serial.println((String) millis()+", P"+", 1");
       R1=1;
       ArithmeticConstantSum1=ArithmeticConstantSum1 + ArithmeticConstant;
-//      LCDSetCursorPosition(1,4);
-//      lcd.print("                   ");
-//      LCDSetCursorPosition(1,4);
-//      lcd.print((String)"W1="+ArithmeticConstantSum1+" W2="+ArithmeticConstantSum2);
+      LCDSetCursorPosition(1,4);
+      lcd.print("                   ");
+      LCDSetCursorPosition(1,4);
+      lcd.print((String)"W1="+ArithmeticConstantSum1+" W2="+ArithmeticConstantSum2);
       
       if(LED1status==1){
         digitalWrite(LED1,HIGH);
@@ -214,10 +214,10 @@ drug=1;
       Serial.println((String) millis()+", P"+", 2");
       R2=1;
       ArithmeticConstantSum2=ArithmeticConstantSum2 + ArithmeticConstant;
-//      LCDSetCursorPosition(1,4);
-//      lcd.print("                   ");
-//      LCDSetCursorPosition(1,4);
-//      lcd.print((String)"W1="+ArithmeticConstantSum1+" W2="+ArithmeticConstantSum2);
+      LCDSetCursorPosition(1,4);
+      lcd.print("                   ");
+      LCDSetCursorPosition(1,4);
+      lcd.print((String)"W1="+ArithmeticConstantSum1+" W2="+ArithmeticConstantSum2);
       
       if(LED2status==1){
         digitalWrite(LED2,HIGH);
