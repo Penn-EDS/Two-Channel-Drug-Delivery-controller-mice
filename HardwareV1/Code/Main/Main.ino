@@ -1,5 +1,8 @@
+#include "RTClib.h"
 #include "Arduino.h"
 #define lcd Serial1 // with lcd serial1
+RTC_DS1307 rtc;
+
 
 // 
 // Use this Preprocessor directive during debugging
@@ -177,7 +180,29 @@ void setup()
       LCDRGBColor(0,255,0);
       delay(2000);
       LCDclear();
+
+      if (! rtc.begin()) {
+        LCDclear();
+        LCDHome();
+        lcd.print("Couldn't find RTC");
+           while (1);
+       }
+
+       if (! rtc.isrunning()) {
+          LCDclear();
+          LCDHome();
+          lcd.print("RTC is NOT running!");
+           while (1);
+         }
+
+  //Use one of this to Function to set the date/time of the RTC. After uplouding the code, COMMENT this two lines and RE-Upload the CODE. 
+         //rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));  // following line sets the RTC to the date & time this sketch was compiled
+                  
+                  //OR
+
+         //rtc.adjust(DateTime(2020, 3, 25, 14, 59, 0));  // This line sets the RTC with an explicit date & time, for example to set: January 21, 2014 at 3am you would call:  rtc.adjust(DateTime(2014, 1, 21, 3, 0, 0)); like this rtc.adjust(DateTime(year, month, day, military hour, minutes, seconds));
 }
+
 
 void loop() {
 //***** MAIN Menu 

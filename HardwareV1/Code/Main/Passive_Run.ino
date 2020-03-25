@@ -11,7 +11,7 @@ lcd.print(PuffMaxQuantity);
 LCDSetCursorPosition(1,4);
 lcd.print("press B to cancel");
 
-// insert here rct date
+RTCDateTime();
 Serial.println("Schedule: Passive");
 Serial.println((String)"Puff Length(miliseconds): "+Puffmiliseconds);
 Serial.println((String)"Puff Interval(m:s): "+PuffIntmin+":"+PuffIntsec);

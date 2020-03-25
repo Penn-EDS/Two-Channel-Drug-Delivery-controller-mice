@@ -2,6 +2,7 @@
 //* file with function prototypes
 //***
 
+//--------------LCD----------------
 void LCDBacklight(char D){
  char B = "ON";
  char C = "OFF";
@@ -125,4 +126,22 @@ void LCDRGBColor(int Red , int Green,int Blue){
   lcd.write(Green);
   lcd.write(Blue);
   delay(10);
+}
+
+//-------------RTC-------------------------
+
+void RTCDateTime(){
+    DateTime now = rtc.now();
+    Serial.print("Date: ");
+    Serial.print(now.year(), DEC);
+    Serial.print('/');
+    Serial.print(now.month(), DEC);
+    Serial.print('/');
+    Serial.print(now.day(), DEC);
+    Serial.print(" | ");
+    Serial.print(now.hour(), DEC);
+    Serial.print(':');
+    Serial.print(now.minute(), DEC);
+    Serial.print(':');
+    Serial.println(now.second(), DEC);
 }
