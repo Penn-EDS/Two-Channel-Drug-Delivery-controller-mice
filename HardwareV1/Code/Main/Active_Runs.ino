@@ -122,7 +122,8 @@ void ArithmeticRatioStart(){
   LCDSetCursorPosition(1,2);
   lcd.print("Minutes Left:");
   LCDSetCursorPosition(1,4);
-  lcd.print((String)"W1="+ArithmeticConstant+" W2="+ArithmeticConstant);
+  //lcd.print((String)"W1="+ArithmeticConstant+" W2="+ArithmeticConstant);
+  lcd.print("TO CANCEL HOLD B");
   
   // insert here rct date
   Serial.println("Schedule: Arithmetic Ratio");
@@ -177,7 +178,7 @@ previousSeccionTimeout= millis();
 ArithmeticConstantSum1=ArithmeticConstant;
 ArithmeticConstantSum2=ArithmeticConstant;
 drug=1;
- while(millis() - previoustime <= SessionLengthInMiliseconds && millis() - previousSeccionTimeout <=SessionTimeOutmilis && Numpuffcounter <= PuffMaxQuantity){  //currenttime-previoustime <= SessionLengthInMiliseconds
+ while(millis() - previoustime <= SessionLengthInMiliseconds && millis() - previousSeccionTimeout <=SessionTimeOutmilis && Numpuffcounter <= PuffMaxQuantity && digitalRead(BB)==HIGH){  //currenttime-previoustime <= SessionLengthInMiliseconds
       
     checkWheelschange();
     
@@ -188,10 +189,10 @@ drug=1;
       Serial.println((String) millis()+", P"+", 1");
       R1=1;
       ArithmeticConstantSum1=ArithmeticConstantSum1 + ArithmeticConstant;
-      LCDSetCursorPosition(1,4);
-      lcd.print("                   ");
-      LCDSetCursorPosition(1,4);
-      lcd.print((String)"W1="+ArithmeticConstantSum1+" W2="+ArithmeticConstantSum2);
+//      LCDSetCursorPosition(1,4);
+//      lcd.print("                   ");
+//      LCDSetCursorPosition(1,4);
+//      lcd.print((String)"W1="+ArithmeticConstantSum1+" W2="+ArithmeticConstantSum2);
       
       if(LED1status==1){
         digitalWrite(LED1,HIGH);
@@ -213,10 +214,10 @@ drug=1;
       Serial.println((String) millis()+", P"+", 2");
       R2=1;
       ArithmeticConstantSum2=ArithmeticConstantSum2 + ArithmeticConstant;
-      LCDSetCursorPosition(1,4);
-      lcd.print("                   ");
-      LCDSetCursorPosition(1,4);
-      lcd.print((String)"W1="+ArithmeticConstantSum1+" W2="+ArithmeticConstantSum2);
+//      LCDSetCursorPosition(1,4);
+//      lcd.print("                   ");
+//      LCDSetCursorPosition(1,4);
+//      lcd.print((String)"W1="+ArithmeticConstantSum1+" W2="+ArithmeticConstantSum2);
       
       if(LED2status==1){
         digitalWrite(LED2,HIGH);
@@ -233,6 +234,16 @@ drug=1;
 
   }
  Serial.println((String) millis()+", E");
+
+ if(digitalRead(BB)==LOW){
+   LCDclear();
+   LCDHome();
+   lcd.print("Arithmetic Seccion");
+   LCDSetCursorPosition(1,2);
+   lcd.print("     CANCELLED     ");
+   Serial.println("THIS SECCION WAS CANCELLED");
+   delay(3000);
+  }
   
 }
 
