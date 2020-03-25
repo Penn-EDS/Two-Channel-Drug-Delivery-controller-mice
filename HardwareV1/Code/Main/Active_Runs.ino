@@ -6,6 +6,9 @@ void FixedRatioStart(){
   lcd.print("Fixed Ratio Running");
   LCDSetCursorPosition(1,2);
   lcd.print("Minutes Left:");
+  LCDSetCursorPosition(1,4);
+  lcd.print("TO CANCEL HOLD B");
+  
 
   // insert here rct date
   Serial.println("Schedule: Fixed Ratio");
@@ -51,7 +54,7 @@ Serial.println((String) millis()+", T");
  
 previoustime = millis();
 drug=1;
- while(millis() - previoustime <= SessionLengthInMiliseconds && Numpuffcounter <= PuffMaxQuantity){  //currenttime-previoustime <= SessionLengthInMiliseconds
+ while(millis() - previoustime <= SessionLengthInMiliseconds && Numpuffcounter <= PuffMaxQuantity && digitalRead(BB)==HIGH){  //currenttime-previoustime <= SessionLengthInMiliseconds
   
     checkWheelschange();
     
@@ -94,7 +97,17 @@ drug=1;
   
 
   }
- Serial.println((String) millis()+", E"); 
+ Serial.println((String) millis()+", E");
+ 
+ if(digitalRead(BB)==LOW){
+   LCDclear();
+   LCDHome();
+   lcd.print("Fixed Ratio Seccion");
+   LCDSetCursorPosition(1,2);
+   lcd.print("     CANCELLED     ");
+   Serial.println("THIS SECCION WAS CANCELLED");
+  }
+  
 }
 
 
