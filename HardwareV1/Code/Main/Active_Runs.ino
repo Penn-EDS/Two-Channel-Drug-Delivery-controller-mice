@@ -316,7 +316,7 @@ RG2=1;
 WG1=1;
 WG2=1;
 drug=1;
- while(millis() - previoustime <= SessionLengthInMiliseconds && millis() - previousSeccionTimeout <= SessionTimeOutmilis && Numpuffcounter <= PuffMaxQuantity){  //currenttime-previoustime <= SessionLengthInMiliseconds
+ while(millis() - previoustime <= SessionLengthInMiliseconds && millis() - previousSeccionTimeout <= SessionTimeOutmilis && Numpuffcounter <= PuffMaxQuantity && digitalRead(BB)==HIGH){  //currenttime-previoustime <= SessionLengthInMiliseconds
   
 
     
@@ -380,6 +380,16 @@ drug=1;
 
   }
  Serial.println((String) millis()+", E");
+
+ if(digitalRead(BB)==LOW){
+   LCDclear();
+   LCDHome();
+   lcd.print("Geometric Seccion");
+   LCDSetCursorPosition(1,2);
+   lcd.print("     CANCELLED     ");
+   Serial.println("THIS SECCION WAS CANCELLED");
+   delay(3000);
+  }
  
 }
 
