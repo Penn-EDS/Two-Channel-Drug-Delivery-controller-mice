@@ -490,7 +490,7 @@ void FixedResponseRatio(){
   lcd.print("PRESS: A(+) , B(-)");
   LCDSetCursorPosition(1, 4);
   lcd.print("PRESS C for OK");
-  
+  delay(100);
   ButtonC = digitalRead(BC);
   while ( ButtonC == HIGH) {
     delay(100);
