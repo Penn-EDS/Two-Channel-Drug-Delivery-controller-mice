@@ -12,6 +12,8 @@ RTC_DS1307 rtc;
 #include <SD.h>
 File myFile;
 
+char filename[15];//array for the file name
+int device=01;         // up to 99 devices
 const int SDcs = 22;  //SD slave pin 
 const int USBcs=10;   //USB slave pin
 int readed = 0;
@@ -281,6 +283,7 @@ void setup()
           LCDclear();
           LCDHome();
           lcd.print("RTC is NOT running!");
+          rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));
            while (1);
          }
 
@@ -315,14 +318,19 @@ void setup()
           
         //------SD card initialization------------   
           if (!SD.begin(SDcs)) {
-            Serial.println("SD initialization failed!");
+            LCDclear();
+            LCDHome();
+            lcd.print("SD failed!");
             while (1);
             }
-        
-          Serial.println("SD initialization done.");
+
+            LCDclear();
+            LCDHome();
+            lcd.print("SD Done.");
+            delay(2000);
           
-           myFile = SD.open("test.txt", FILE_WRITE);
-           myFile.close();
+           //myFile = SD.open("test.txt", FILE_WRITE);
+           //myFile.close();
         
           digitalWrite(SDcs,HIGH);
           digitalWrite(USBcs,LOW);

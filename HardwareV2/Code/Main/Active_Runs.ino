@@ -10,8 +10,12 @@ void FixedRatioStart(){
   LCDSetCursorPosition(1,4);
   lcd.print("TO CANCEL HOLD B");
   
-
+  CreateFile();
   RTCDateTime();
+  myFile.println((String)"USER :"+username);
+  myFile.println((String)"Drug: "+drugname);
+  myFile.println((String)"Animal: "+animalnameactive);
+
   Serial.println("Schedule: Fixed Ratio");
   
   if(LED1status==1){
@@ -127,7 +131,12 @@ void ArithmeticRatioStart(){
   lcd.print((String)"W1="+ArithmeticConstant+" W2="+ArithmeticConstant);
   
   
+  CreateFile();
   RTCDateTime();
+  myFile.println((String)"USER :"+username);
+  myFile.println((String)"Drug: "+drugname);
+  myFile.println((String)"Animal: "+animalnameactive);
+  
   Serial.println("Schedule: Arithmetic Ratio");
   
   if(LED1status==1){
@@ -264,7 +273,12 @@ void GeometricRatioStart(){
   LCDSetCursorPosition(1,4);
   lcd.print((String)"W1="+WG1+" W2="+WG2);
 
+  CreateFile();
   RTCDateTime();
+  myFile.println((String)"USER :"+username);
+  myFile.println((String)"Drug: "+drugname);
+  myFile.println((String)"Animal: "+animalnameactive);
+  
   Serial.println("Schedule: Geometric Ratio");
   
   if(LED1status==1){

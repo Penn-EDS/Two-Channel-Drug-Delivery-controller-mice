@@ -131,17 +131,79 @@ void LCDRGBColor(int Red , int Green,int Blue){
 //-------------RTC-------------------------
 
 void RTCDateTime(){
+  
     DateTime now = rtc.now();
-    Serial.print("Date: ");
-    Serial.print(now.year(), DEC);
-    Serial.print('/');
-    Serial.print(now.month(), DEC);
-    Serial.print('/');
-    Serial.print(now.day(), DEC);
-    Serial.print(" | ");
-    Serial.print(now.hour(), DEC);
-    Serial.print(':');
-    Serial.print(now.minute(), DEC);
-    Serial.print(':');
-    Serial.println(now.second(), DEC);
+    myFile.print("Date: ");
+    myFile.print(now.year(), DEC);
+    myFile.print('/');
+    myFile.print(now.month(), DEC);
+    myFile.print('/');
+    myFile.print(now.day(), DEC);
+    myFile.print(" | ");
+    myFile.print(now.hour(), DEC);
+    myFile.print(':');
+    myFile.print(now.minute(), DEC);
+    myFile.print(':');
+    myFile.println(now.second(), DEC);
+    
+}
+
+void CreateFile() {
+  //put this next line *Right Before* any file open line:
+  Serial.println("Creating a new file");
+
+ digitalWrite(USBcs,HIGH);
+ digitalWrite(SDcs,LOW);
+ 
+  // see if the card is present and can be initialized:
+  if (!SD.begin(SDcs)) {
+    
+  } else {
+    Serial.println("Able to select card");
+  }
+
+
+
+  // Name filename in format F###_MMDDYYNN, where MM is month, DD is day, YY is year, and NN is an incrementing number for the number of files initialized each day
+  strcpy(filename, "________.CSV");  // placeholder filename
+  getFilename(filename);//getfilename is a function that generates the filename using the device number, date, and increment
+  Serial.println("Past getting file name");
+  myFile = SD.open(filename, FILE_WRITE);//this creates a file with that name and assigns opening it to a variable (logfile)
+Serial.println(filename);
+  if (!myFile) {
+    Serial.println("Cannot open File");
+    while(1);
+  }
+
+}
+
+
+void getFilename(char *filename) {
+  Serial.println("Generating file name");
+  DateTime now = rtc.now();
+  //filename[3] = (device / 100) % 10 + '0';
+  //filename[3] = (device / 10) % 10 + '0';
+  filename[0] = device % 10 + '0';
+  filename[1] = now.month() / 10 + '0';
+  filename[2] = now.month() % 10 + '0';
+  filename[3] = now.day() / 10 + '0';
+  filename[4] = now.day() % 10 + '0';
+  filename[5] = (now.year() / 1000) % 10 + '0'; // descart the first to digits
+  filename[6] = (now.year() / 100) % 10 + '0';  // descart the first to digits
+  filename[5] = (now.year() / 10) % 10 + '0';
+  filename[6] = now.year() % 10 + '0';
+  filename[8] = '.';
+  filename[9] = 'C';
+  filename[10] = 'S';
+  filename[11] = 'V';
+  for (uint8_t i = 0; i < 10; i++) {
+    //filename[8] = '0' + i / 10;
+    filename[7] = '0' + i % 10;
+    // create if does not exist, do not open existing, write, sync after write
+    if (! SD.exists(filename)) {
+      break;
+    }
+  }
+  
+  
 }

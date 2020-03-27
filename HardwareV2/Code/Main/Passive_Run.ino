@@ -11,11 +11,24 @@ lcd.print(PuffMaxQuantity);
 LCDSetCursorPosition(1,4);
 lcd.print("press B to cancel");
 
+CreateFile();
 RTCDateTime();
-Serial.println("Schedule: Passive");
-Serial.println((String)"Puff Length(miliseconds): "+Puffmiliseconds);
-Serial.println((String)"Puff Interval(m:s): "+PuffIntmin+":"+PuffIntsec);
-Serial.println((String)"Max # Puff: "+ PuffMaxQuantity);
+
+myFile.println((String)"USER :"+username);
+myFile.println((String)"Drug: "+drugname);
+myFile.println("Schedule: Passive");
+myFile.println((String)"Puff Length(miliseconds): "+Puffmiliseconds);
+myFile.println((String)"Puff Interval(m:s): "+PuffIntmin+":"+PuffIntsec);
+myFile.println((String)"Max # Puff: "+ PuffMaxQuantity);
+
+myFile.println((String)"Animal #1: "+animalnamepassive1);
+myFile.println((String)"Animal #2: "+animalnamepassive2);
+myFile.println((String)"Animal #3: "+animalnamepassive3);
+myFile.println((String)"Animal #4: "+animalnamepassive4);
+myFile.println((String)"Animal #5: "+animalnamepassive5);
+myFile.println((String)"Animal #6: "+animalnamepassive6);
+myFile.println((String)"Animal #7: "+animalnamepassive7);
+myFile.println((String)"Animal #8: "+animalnamepassive8);
 
 
 drug=0;
