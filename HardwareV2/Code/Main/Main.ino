@@ -3,12 +3,87 @@
 #define lcd Serial1 // with lcd serial1
 RTC_DS1307 rtc;
 
-#include <hidboot.h>
+//-----Scanner and SD functions and librarys----
+#include <usbhid.h>
 #include <usbhub.h>
+#include <hiduniversal.h>
+#include <hidboot.h>
 #include <SPI.h>
 #include <SD.h>
 File myFile;
-#include "scannerbarcode.h"
+
+const int SDcs = 22;  //SD slave pin 
+const int USBcs=10;   //USB slave pin
+int readed = 0;
+String barcodeword="";
+String username="";
+String animalname="";
+String drugname="";
+
+class MyParser : public HIDReportParser {
+  public:
+    MyParser();
+    void Parse(USBHID *hid, bool is_rpt_id, uint8_t len, uint8_t *buf);
+  protected:
+    uint8_t KeyToAscii(bool upper, uint8_t mod, uint8_t key);
+    virtual void OnKeyScanned(bool upper, uint8_t mod, uint8_t key);
+    virtual void OnScanFinished();
+};
+
+MyParser::MyParser() {}
+
+void MyParser::Parse(USBHID *hid, bool is_rpt_id, uint8_t len, uint8_t *buf) {
+  // If error or empty, return
+  if (buf[2] == 1 || buf[2] == 0) return;
+
+  for (uint8_t i = 7; i >= 2; i--) {
+    // If empty, skip
+    if (buf[i] == 0) continue;
+
+    // If enter signal emitted, scan finished
+    if (buf[i] == UHS_HID_BOOT_KEY_ENTER) {
+      OnScanFinished();
+    }
+
+    // If not, continue normally
+    else {
+      // If bit position not in 2, it's uppercase words
+      OnKeyScanned(i > 2, buf, buf[i]);
+    }
+
+    return;
+  }
+}
+
+uint8_t MyParser::KeyToAscii(bool upper, uint8_t mod, uint8_t key) {
+  // Letters
+  if (VALUE_WITHIN(key, 0x04, 0x1d)) {
+    if (upper) return (key - 4 + 'A');
+     else return (key - 4 + 'A');
+  }
+
+  // Numbers
+  else if (VALUE_WITHIN(key, 0x1e, 0x27)) {
+    return ((key == UHS_HID_BOOT_KEY_ZERO) ? '0' : key - 0x1e + '1');
+  }
+
+  return 0;
+}
+
+void MyParser::OnKeyScanned(bool upper, uint8_t mod, uint8_t key) {
+  uint8_t ascii = KeyToAscii(upper, mod, key);
+  //Serial.print((char)ascii);
+ barcodeword += (char)ascii;
+}
+
+void MyParser::OnScanFinished() {
+  readed = 1;
+}
+
+USB          Usb;
+USBHub       Hub(&Usb);
+HIDUniversal Hid(&Usb);
+MyParser     Parser;
 
 // 
 // Use this Preprocessor directive during debugging
@@ -25,7 +100,7 @@ int BD = 5; // Button D to pin 5
 int BA = 4; // Button A to pin 4
 
 int vape1=9;   // Pin 9 assigned to vape1 signal
-int vape2=10;  // Pin 10 assigned to vape2 signal
+int vape2=2;  // Pin 2 assigned to vape2 signal
 int LED1=12;   // LED1
 int LED2=11;   // LED2
 
@@ -135,7 +210,7 @@ void setup()
     pinMode(BC,INPUT_PULLUP); // button C
     pinMode(BD,INPUT_PULLUP); // button D
     pinMode(vape1,OUTPUT);    // vape 1 pin 9 
-    pinMode(vape2,OUTPUT);    // vape 2 pin 10
+    pinMode(vape2,OUTPUT);    // vape 2 pin 2
     pinMode(LED1,OUTPUT);
     pinMode(LED2,OUTPUT);
   
@@ -208,27 +283,61 @@ void setup()
 
          //rtc.adjust(DateTime(2020, 3, 25, 14, 59, 0));  // This line sets the RTC with an explicit date & time, for example to set: January 21, 2014 at 3am you would call:  rtc.adjust(DateTime(2014, 1, 21, 3, 0, 0)); like this rtc.adjust(DateTime(year, month, day, military hour, minutes, seconds));
 
-        if (!SD.begin(4)) {
-               Serial.println("SD initialization failed!");
-              while (1);
-            }
 
-            if (Usb.Init() == -1) {
-                Serial.println("USB Host problem ");
-              }
-            HidKeyboard.SetReportParser(0, &Prs);
-           
+//---------USB host initialization--------
+          pinMode(USBcs,OUTPUT);
+          pinMode(SDcs,OUTPUT);
+
+          digitalWrite(SDcs,HIGH);
+          digitalWrite(USBcs,LOW);
+        
+          if (Usb.Init() == -1) {
+            Serial.println("OSC did not start.");
+            }
+        
+          delay( 200 );
+        
+          Hid.SetReportParser(0, &Parser);
+        
+          digitalWrite(USBcs,HIGH);
+          digitalWrite(SDcs,LOW);
+        //--------USB initialization Done-------
+        
+          delay(1000);
+          
+        //------SD card initialization------------   
+          if (!SD.begin(SDcs)) {
+            Serial.println("SD initialization failed!");
+            while (1);
+            }
+        
+          Serial.println("SD initialization done.");
+          
+           myFile = SD.open("test.txt", FILE_WRITE);
+           myFile.close();
+        
+          digitalWrite(SDcs,HIGH);
+          digitalWrite(USBcs,LOW);
+         //------SD card initialization DONE------------ 
+
 }
 
 
 void loop() {
 //***** MAIN Menu 
   main:
+
+    UserName();
+    AnimalName();
+    DrugName();
+    
+    LCDclear();
     LCDHome();
     lcd.print(" For Passive press A ");
     LCDSetCursorPosition(1,2);
     lcd.print(" For Active  press B ");
     LCDSetCursorPosition(2,3);
+    delay(200);
 
     //
     // Loop to select the operation type: Pasive of Active  
