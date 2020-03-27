@@ -28,7 +28,7 @@ void UserName(){
 }
 
 
-void AnimalName(){
+void AnimalNameActive(){
   delay(200);
   digitalWrite(SDcs,HIGH);
   digitalWrite(USBcs,LOW);
@@ -37,14 +37,14 @@ void AnimalName(){
     LCDHome();
     lcd.print("Scann Animal");
     LCDSetCursorPosition(1,2);
-    lcd.print((String)"Animal: "+animalname);
+    lcd.print((String)"Animal: "+animalnameactive);
     LCDSetCursorPosition(1,4);
     lcd.print("PRESS C for OK");
     while(digitalRead(BC)==HIGH){
        Usb.Task();
        if(readed==1){
-          animalname = "";
-          animalname=barcodeword;
+          animalnameactive = "";
+          animalnameactive=barcodeword;
           barcodeword = "";
           readed =0;
           goto animalN;
@@ -76,6 +76,227 @@ void DrugName(){
           barcodeword = "";
           readed =0;
           goto drugN;
+        }
+        
+     }
+ digitalWrite(USBcs,HIGH);
+ digitalWrite(SDcs,LOW);
+}
+
+
+//------ passive animals-----
+
+void AnimalNamePasssive1(){
+  delay(200);
+  digitalWrite(SDcs,HIGH);
+  digitalWrite(USBcs,LOW);
+  animal1N:
+    LCDclear();
+    LCDHome();
+    lcd.print("Scann Animal");
+    LCDSetCursorPosition(1,2);
+    lcd.print((String)"Animal: "+animalnamepassive1);
+    LCDSetCursorPosition(1,4);
+    lcd.print("PRESS C for OK");
+    while(digitalRead(BC)==HIGH){
+       Usb.Task();
+       if(readed==1){
+          animalnamepassive1 = "";
+          animalnamepassive1=barcodeword;
+          barcodeword = "";
+          readed =0;
+          goto animal1N;
+        }
+        
+     }
+ digitalWrite(USBcs,HIGH);
+ digitalWrite(SDcs,LOW);
+}
+
+
+void AnimalNamePasssive2(){
+  delay(200);
+  digitalWrite(SDcs,HIGH);
+  digitalWrite(USBcs,LOW);
+  animal2N:
+    LCDclear();
+    LCDHome();
+    lcd.print("Scann Animal");
+    LCDSetCursorPosition(1,2);
+    lcd.print((String)"Animal: "+animalnamepassive2);
+    LCDSetCursorPosition(1,4);
+    lcd.print("PRESS C for OK");
+    while(digitalRead(BC)==HIGH){
+       Usb.Task();
+       if(readed==1){
+          animalnamepassive2 = "";
+          animalnamepassive2=barcodeword;
+          barcodeword = "";
+          readed =0;
+          goto animal2N;
+        }
+        
+     }
+ digitalWrite(USBcs,HIGH);
+ digitalWrite(SDcs,LOW);
+}
+
+
+void AnimalNamePasssive3(){
+  delay(200);
+  digitalWrite(SDcs,HIGH);
+  digitalWrite(USBcs,LOW);
+  animal3N:
+    LCDclear();
+    LCDHome();
+    lcd.print("Scann Animal");
+    LCDSetCursorPosition(1,2);
+    lcd.print((String)"Animal: "+animalnamepassive3);
+    LCDSetCursorPosition(1,4);
+    lcd.print("PRESS C for OK");
+    while(digitalRead(BC)==HIGH){
+       Usb.Task();
+       if(readed==1){
+          animalnamepassive3 = "";
+          animalnamepassive3=barcodeword;
+          barcodeword = "";
+          readed =0;
+          goto animal3N;
+        }
+        
+     }
+ digitalWrite(USBcs,HIGH);
+ digitalWrite(SDcs,LOW);
+}
+
+void AnimalNamePasssive4(){
+  delay(200);
+  digitalWrite(SDcs,HIGH);
+  digitalWrite(USBcs,LOW);
+  animal4N:
+    LCDclear();
+    LCDHome();
+    lcd.print("Scann Animal");
+    LCDSetCursorPosition(1,2);
+    lcd.print((String)"Animal: "+animalnamepassive4);
+    LCDSetCursorPosition(1,4);
+    lcd.print("PRESS C for OK");
+    while(digitalRead(BC)==HIGH){
+       Usb.Task();
+       if(readed==1){
+          animalnamepassive4 = "";
+          animalnamepassive4=barcodeword;
+          barcodeword = "";
+          readed =0;
+          goto animal4N;
+        }
+        
+     }
+ digitalWrite(USBcs,HIGH);
+ digitalWrite(SDcs,LOW);
+}
+
+void AnimalNamePasssive5(){
+  delay(200);
+  digitalWrite(SDcs,HIGH);
+  digitalWrite(USBcs,LOW);
+  animal5N:
+    LCDclear();
+    LCDHome();
+    lcd.print("Scann Animal");
+    LCDSetCursorPosition(1,2);
+    lcd.print((String)"Animal: "+animalnamepassive5);
+    LCDSetCursorPosition(1,4);
+    lcd.print("PRESS C for OK");
+    while(digitalRead(BC)==HIGH){
+       Usb.Task();
+       if(readed==1){
+          animalnamepassive5 = "";
+          animalnamepassive5=barcodeword;
+          barcodeword = "";
+          readed =0;
+          goto animal5N;
+        }
+        
+     }
+ digitalWrite(USBcs,HIGH);
+ digitalWrite(SDcs,LOW);
+}
+
+void AnimalNamePasssive6(){
+  delay(200);
+  digitalWrite(SDcs,HIGH);
+  digitalWrite(USBcs,LOW);
+  animal6N:
+    LCDclear();
+    LCDHome();
+    lcd.print("Scann Animal");
+    LCDSetCursorPosition(1,2);
+    lcd.print((String)"Animal: "+animalnamepassive6);
+    LCDSetCursorPosition(1,4);
+    lcd.print("PRESS C for OK");
+    while(digitalRead(BC)==HIGH){
+       Usb.Task();
+       if(readed==1){
+          animalnamepassive6 = "";
+          animalnamepassive6=barcodeword;
+          barcodeword = "";
+          readed =0;
+          goto animal6N;
+        }
+        
+     }
+ digitalWrite(USBcs,HIGH);
+ digitalWrite(SDcs,LOW);
+}
+
+void AnimalNamePasssive7(){
+  delay(200);
+  digitalWrite(SDcs,HIGH);
+  digitalWrite(USBcs,LOW);
+  animal7N:
+    LCDclear();
+    LCDHome();
+    lcd.print("Scann Animal");
+    LCDSetCursorPosition(1,2);
+    lcd.print((String)"Animal: "+animalnamepassive7);
+    LCDSetCursorPosition(1,4);
+    lcd.print("PRESS C for OK");
+    while(digitalRead(BC)==HIGH){
+       Usb.Task();
+       if(readed==1){
+          animalnamepassive7 = "";
+          animalnamepassive7=barcodeword;
+          barcodeword = "";
+          readed =0;
+          goto animal7N;
+        }
+        
+     }
+ digitalWrite(USBcs,HIGH);
+ digitalWrite(SDcs,LOW);
+}
+
+void AnimalNamePasssive8(){
+  delay(200);
+  digitalWrite(SDcs,HIGH);
+  digitalWrite(USBcs,LOW);
+  animal8N:
+    LCDclear();
+    LCDHome();
+    lcd.print("Scann Animal");
+    LCDSetCursorPosition(1,2);
+    lcd.print((String)"Animal: "+animalnamepassive8);
+    LCDSetCursorPosition(1,4);
+    lcd.print("PRESS C for OK");
+    while(digitalRead(BC)==HIGH){
+       Usb.Task();
+       if(readed==1){
+          animalnamepassive8 = "";
+          animalnamepassive8=barcodeword;
+          barcodeword = "";
+          readed =0;
+          goto animal8N;
         }
         
      }

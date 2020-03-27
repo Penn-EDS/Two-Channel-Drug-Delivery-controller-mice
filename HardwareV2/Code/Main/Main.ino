@@ -17,7 +17,15 @@ const int USBcs=10;   //USB slave pin
 int readed = 0;
 String barcodeword="";
 String username="";
-String animalname="";
+String animalnameactive="";
+String animalnamepassive1="";
+String animalnamepassive2="";
+String animalnamepassive3="";
+String animalnamepassive4="";
+String animalnamepassive5="";
+String animalnamepassive6="";
+String animalnamepassive7="";
+String animalnamepassive8="";
 String drugname="";
 
 class MyParser : public HIDReportParser {
@@ -328,7 +336,6 @@ void loop() {
   main:
 
     UserName();
-    AnimalName();
     DrugName();
     
     LCDclear();
@@ -348,6 +355,8 @@ void loop() {
       // PASSIVE LOOP
       if ((ButtonA = digitalRead(BA))==LOW){  
         Passreview:
+
+          
           delay(200);
           PuffLengthselect();
           delay(200);
@@ -380,6 +389,9 @@ void loop() {
       if((ButtonB = digitalRead(BB))==LOW){
          Activereview:
 
+           delay(200);
+           AnimalNameActive();
+           delay(200);
            whichvapeActive();
            delay(200);
            Primingpuff();
