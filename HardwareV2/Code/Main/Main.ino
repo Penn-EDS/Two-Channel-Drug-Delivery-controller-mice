@@ -334,9 +334,9 @@ void setup()
 void loop() {
 //***** MAIN Menu 
   main:
-
+  
+    delay(200);
     UserName();
-    DrugName();
     
     LCDclear();
     LCDHome();
@@ -355,8 +355,25 @@ void loop() {
       // PASSIVE LOOP
       if ((ButtonA = digitalRead(BA))==LOW){  
         Passreview:
-
-          
+        
+          delay(200);
+          DrugName();
+          delay(200);
+          AnimalNamePasssive1();
+          delay(200);
+          AnimalNamePasssive2();
+          delay(200);
+          AnimalNamePasssive3();
+          delay(200);
+          AnimalNamePasssive4();
+          delay(200);
+          AnimalNamePasssive5();
+          delay(200);
+          AnimalNamePasssive6();
+          delay(200);
+          AnimalNamePasssive7();
+          delay(200);
+          AnimalNamePasssive8();
           delay(200);
           PuffLengthselect();
           delay(200);
@@ -388,7 +405,9 @@ void loop() {
 //****** ACTIVE LOOP
       if((ButtonB = digitalRead(BB))==LOW){
          Activereview:
-
+         
+           delay(200);
+           DrugName();
            delay(200);
            AnimalNameActive();
            delay(200);
