@@ -1,5 +1,7 @@
 void FixedRatioStart(){
   delay(300);
+  W1Turn=0;
+  W2Turn=0;
   drug=0;
   Numpuffcounter=1;
   LCDclear();
@@ -121,6 +123,8 @@ drug=1;
 
 void ArithmeticRatioStart(){
   delay(300);
+  W1Turn=0;
+  W2Turn=0;
   drug=0;
   Numpuffcounter=1;
   LCDclear();
@@ -265,6 +269,12 @@ drug=1;
 
 void GeometricRatioStart(){
   delay(300);
+  W1Turn=0;
+  W2Turn=0;
+  WG1=1;
+  WG2=1;
+  RG1=1;
+  RG2=1;
   drug=0;
   Numpuffcounter=1;
   LCDclear();
@@ -330,10 +340,6 @@ myFile.println((String) millis()+", T");
  
 previoustime = millis();
 previousSeccionTimeout= millis();
-RG1=1;
-RG2=1;
-WG1=1;
-WG2=1;
 drug=1;
  while(millis() - previoustime <= SessionLengthInMiliseconds && millis() - previousSeccionTimeout <= SessionTimeOutmilis && Numpuffcounter <= PuffMaxQuantity && digitalRead(BB)==HIGH){  //currenttime-previoustime <= SessionLengthInMiliseconds
   
