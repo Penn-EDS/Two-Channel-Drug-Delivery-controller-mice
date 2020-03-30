@@ -1,15 +1,15 @@
 void PassiveStart(){
 LCDclear();
 LCDHome();
-lcd.print(" Passive Section ON ");
+lcd.print(" Passive Session ON ");
 LCDSetCursorPosition(1,2);
-lcd.print("# puff Past:");
+lcd.print("# Puff Past:");
 lcd.print(Numpuffcounter);
 LCDSetCursorPosition(1,3);
 lcd.print("Total # of Puff:");
 lcd.print(PuffMaxQuantity);
 LCDSetCursorPosition(1,4);
-lcd.print("press B to cancel");
+lcd.print("PRESS B to Cancel");
 
 CreateFile();
 RTCDateTime();
@@ -48,15 +48,15 @@ while(Numpuffcounter <= PuffMaxQuantity){   //  passive vaping code
   drug=1;
   LCDclear();
   LCDHome();
-  lcd.print(" Passive Section ON ");
+  lcd.print(" Passive Session ON ");
   LCDSetCursorPosition(1,2);
-  lcd.print("# puff past:");
+  lcd.print("# Puff Past:");
   lcd.print(Numpuffcounter);
   LCDSetCursorPosition(1,3);
   lcd.print("Total # of Puff:");
   lcd.print(PuffMaxQuantity);
   LCDSetCursorPosition(1,4);
-  lcd.print("press B to cancel");
+  lcd.print("PRESS B to cancel");
   ButtonB=digitalRead(BB);
   if (ButtonB==LOW){
       LCDclear();
@@ -108,12 +108,13 @@ void fivemincleaning(){
     while(fivemindelay>=fivemincounter){
       LCDclear();
       LCDHome();
-      lcd.print(" Drug cleaning ");
+      lcd.print(" Purging Chambers ");
       LCDSetCursorPosition(1,2);
-      lcd.print("Past minutes: ");
-      lcd.print(fiveminprintcounter);
+      lcd.print("Elapsed Minutes: ");
       LCDSetCursorPosition(1,3);
-      lcd.print("press B to cancel");
+      lcd.print(fiveminprintcounter);
+      LCDSetCursorPosition(1,4);
+      lcd.print("PRESS B to Cancel");
       
       
       onemincounter=0;
@@ -140,9 +141,11 @@ void fivemincleaning(){
 
       LCDclear();
       LCDHome();
-      lcd.print("Drug Cleaning Ended");
+      lcd.print("  Purging Chambers");
       LCDSetCursorPosition(1,2);
-      lcd.print("Press C to Main Menu");
+      lcd.print("   Completed");
+      LCDSetCursorPosition(1,4);
+      lcd.print("PRESS C to Main Menu");
       ButtonC = digitalRead(BC);
   while(ButtonC==HIGH){
     delay(150);

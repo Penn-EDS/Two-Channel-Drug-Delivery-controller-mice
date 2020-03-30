@@ -805,7 +805,7 @@ void Whichvapepriming(){
   delay(200);
     LCDclear();            
     LCDHome();
-    lcd.print("which Vape priming?");
+    lcd.print("Which Vape priming?");
     LCDSetCursorPosition(2,2);
     lcd.print((String)"Vaporizer:"+ whichvapepriming);
     LCDSetCursorPosition(1,3);
@@ -827,7 +827,7 @@ void Whichvapepriming(){
       LEDstatuspriming=LED1status;
       LCDclear();            
       LCDHome();
-      lcd.print("which Vape priming?");
+      lcd.print("Which Vape priming?");
       LCDSetCursorPosition(2,2);
       lcd.print((String)"Vaporizer:"+ whichvapepriming);
       LCDSetCursorPosition(1,3);
@@ -843,7 +843,7 @@ void Whichvapepriming(){
       LEDstatuspriming=LED2status;
       LCDclear();            
       LCDHome();
-      lcd.print("which Vape priming?");
+      lcd.print("Which Vape priming?");
       LCDSetCursorPosition(2,2);
       lcd.print((String)"Vaporizer:"+ whichvapepriming);
       LCDSetCursorPosition(1,3);
@@ -860,7 +860,7 @@ void whichvapeActive(){
     delay(200);
     LCDclear();            
     LCDHome();
-    lcd.print("which Vape Active?");
+    lcd.print("Which Vape Active?");
     LCDSetCursorPosition(2,2);
     lcd.print((String)"Vaporizer:"+ whichvapeactive);
     LCDSetCursorPosition(1,3);
@@ -879,7 +879,7 @@ void whichvapeActive(){
       whichvapeactive=1;
       LCDclear();            
       LCDHome();
-      lcd.print("which Vape Active?");
+      lcd.print("Which Vape Active?");
       LCDSetCursorPosition(2,2);
       lcd.print((String)"Vaporizer:"+ whichvapeactive);
       LCDSetCursorPosition(1,3);
@@ -892,7 +892,7 @@ void whichvapeActive(){
       whichvapeactive=2;
       LCDclear();            
       LCDHome();
-      lcd.print("which Vape Active?");
+      lcd.print("Which Vape Active?");
       LCDSetCursorPosition(2,2);
       lcd.print((String)"Vaporizer:"+ whichvapeactive);
       LCDSetCursorPosition(1,3);
@@ -911,7 +911,7 @@ void IFSessionTimeOut(){
   if (ifSessionTimeOut==1){
     LCDclear();            
     LCDHome();
-    lcd.print("Seccion Time Out?");
+    lcd.print("Session Time Out?");
     LCDSetCursorPosition(2,2);
     lcd.print("YES");
     ifSessionTimeOut=1;
@@ -923,7 +923,7 @@ void IFSessionTimeOut(){
   if (ifSessionTimeOut==0){
       LCDclear();            
       LCDHome();
-      lcd.print("Seccion Time Out?");
+      lcd.print("Session Time Out?");
       LCDSetCursorPosition(2,2);
       lcd.print("NO");
       ifSessionTimeOut=0;
@@ -941,7 +941,7 @@ void IFSessionTimeOut(){
     if ( ButtonA == LOW){
       LCDclear();            
       LCDHome();
-      lcd.print("Seccion Time Out?");
+      lcd.print("Session Time Out?");
       LCDSetCursorPosition(2,2);
       lcd.print("YES");
       ifSessionTimeOut=1;
@@ -953,7 +953,7 @@ void IFSessionTimeOut(){
     if ( ButtonB == LOW){
       LCDclear();            
       LCDHome();
-      lcd.print("Seccion Time Out?");
+      lcd.print("Session Time Out?");
       LCDSetCursorPosition(2,2);
       lcd.print("NO");
       ifSessionTimeOut=0;

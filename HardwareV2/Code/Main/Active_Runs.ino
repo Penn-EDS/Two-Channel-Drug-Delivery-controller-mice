@@ -109,10 +109,10 @@ drug=1;
  if(digitalRead(BB)==LOW){
    LCDclear();
    LCDHome();
-   lcd.print("Fixed Ratio Seccion");
+   lcd.print("Fixed Ratio Session");
    LCDSetCursorPosition(1,2);
    lcd.print("     CANCELLED     ");
-   myFile.println("THIS SECCION WAS CANCELLED");
+   myFile.println("THIS Session WAS CANCELLED");
    myFile.close();
    delay(3000);
   }
@@ -190,17 +190,17 @@ myFile.println((String) millis()+", B");
 myFile.println((String) millis()+", T");
  
 previoustime = millis();
-previousSeccionTimeout= millis();
+previousSessionTimeout= millis();
 ArithmeticConstantSum1=ArithmeticConstant;
 ArithmeticConstantSum2=ArithmeticConstant;
 drug=1;
- while(millis() - previoustime <= SessionLengthInMiliseconds && millis() - previousSeccionTimeout <=SessionTimeOutmilis && Numpuffcounter <= PuffMaxQuantity && digitalRead(BB)==HIGH){  //currenttime-previoustime <= SessionLengthInMiliseconds
+ while(millis() - previoustime <= SessionLengthInMiliseconds && millis() - previousSessionTimeout <=SessionTimeOutmilis && Numpuffcounter <= PuffMaxQuantity && digitalRead(BB)==HIGH){  //currenttime-previoustime <= SessionLengthInMiliseconds
       
     checkWheelschange();
     
     if(W1Turn>= ArithmeticConstantSum1){
      W1Turn=0;
-     previousSeccionTimeout = millis();
+     previousSessionTimeout = millis();
       digitalWrite(vape1,HIGH);
       myFile.println((String) millis()+", P"+", 1");
       R1=1;
@@ -225,7 +225,7 @@ drug=1;
 
     if(W2Turn>= ArithmeticConstantSum2){
       W2Turn=0;
-      previousSeccionTimeout = millis();
+      previousSessionTimeout = millis();
       digitalWrite(vape2,HIGH);
       myFile.println((String) millis()+", P"+", 2");
       R2=1;
@@ -254,10 +254,10 @@ drug=1;
  if(digitalRead(BB)==LOW){
    LCDclear();
    LCDHome();
-   lcd.print("Arithmetic Seccion");
+   lcd.print("Arithmetic Session");
    LCDSetCursorPosition(1,2);
    lcd.print("     CANCELLED     ");
-   myFile.println("THIS SECCION WAS CANCELLED");
+   myFile.println("THIS Session WAS CANCELLED");
    myFile.close();
    delay(3000);
   }
@@ -339,9 +339,9 @@ myFile.println((String) millis()+", B");
 myFile.println((String) millis()+", T");
  
 previoustime = millis();
-previousSeccionTimeout= millis();
+previousSessionTimeout= millis();
 drug=1;
- while(millis() - previoustime <= SessionLengthInMiliseconds && millis() - previousSeccionTimeout <= SessionTimeOutmilis && Numpuffcounter <= PuffMaxQuantity && digitalRead(BB)==HIGH){  //currenttime-previoustime <= SessionLengthInMiliseconds
+ while(millis() - previoustime <= SessionLengthInMiliseconds && millis() - previousSessionTimeout <= SessionTimeOutmilis && Numpuffcounter <= PuffMaxQuantity && digitalRead(BB)==HIGH){  //currenttime-previoustime <= SessionLengthInMiliseconds
   
 
     
@@ -349,7 +349,7 @@ drug=1;
     
     if(W1Turn>= WG1){
      W1Turn=0;
-     previousSeccionTimeout = millis();
+     previousSessionTimeout = millis();
       digitalWrite(vape1,HIGH);
       myFile.println((String) millis()+", P"+", 1");
       R1 = 1;
@@ -378,7 +378,7 @@ drug=1;
 
     if(W2Turn>= WG2){
       W2Turn=0;
-      previousSeccionTimeout = millis();
+      previousSessionTimeout = millis();
       digitalWrite(vape2,HIGH);
       myFile.println((String) millis()+", P"+", 2");
       R2=1;
@@ -409,10 +409,10 @@ drug=1;
  if(digitalRead(BB)==LOW){
    LCDclear();
    LCDHome();
-   lcd.print("Geometric Seccion");
+   lcd.print("Geometric Session");
    LCDSetCursorPosition(1,2);
    lcd.print("     CANCELLED     ");
-   myFile.println("THIS SECCION WAS CANCELLED");
+   myFile.println("THIS Session WAS CANCELLED");
    myFile.close();
    delay(3000);
   }

@@ -189,7 +189,7 @@ unsigned long previoustime = 0;
 unsigned long previoustime2 = 0;
 unsigned long milisleft = 0;
 float minutesleft = 0.0; 
-unsigned long previousSeccionTimeout=0;
+unsigned long previousSessionTimeout=0;
 
 int ifSessionTimeOut=1;
 unsigned long SessionTimeOutmin = 3;
@@ -276,6 +276,11 @@ void setup()
         LCDclear();
         LCDHome();
         lcd.print("Couldn't find RTC");
+        LCDSetCursorPosition(1,2);
+        lcd.print("Please Restart");
+        LCDSetCursorPosition(1,3);
+        lcd.print("Or Call EDS_UPENN");
+       
            while (1);
        }
 
@@ -283,6 +288,8 @@ void setup()
           LCDclear();
           LCDHome();
           lcd.print("RTC is NOT running!");
+          LCDSetCursorPosition(1,2);
+          lcd.print("Call EDS_UPENN");
           rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));
            while (1);
          }
@@ -321,16 +328,22 @@ void setup()
             LCDclear();
             LCDHome();
             lcd.print("SD failed!");
+            LCDSetCursorPosition(1,2);
+            lcd.print("Check SD Card");
+            LCDSetCursorPosition(1,3);
+            lcd.print("Restart Device");
+            LCDSetCursorPosition(1,4);
+            lcd.print("Or Call EDS_UPENN");
+            
             while (1);
             }
 
-            LCDclear();
-            LCDHome();
-            lcd.print("SD Done.");
-            delay(2000);
+            //LCDclear();
+            //LCDHome();
+            //lcd.print("SD Done.");
+            //delay(2000);
           
-           //myFile = SD.open("test.txt", FILE_WRITE);
-           //myFile.close();
+           
         
           digitalWrite(SDcs,HIGH);
           digitalWrite(USBcs,LOW);
@@ -348,9 +361,9 @@ void loop() {
     
     LCDclear();
     LCDHome();
-    lcd.print(" For Passive press A ");
+    lcd.print(" For Passive PRESS A ");
     LCDSetCursorPosition(1,2);
-    lcd.print(" For Active  press B ");
+    lcd.print(" For Active  PRESS B ");
     LCDSetCursorPosition(2,3);
     delay(200);
 
@@ -391,8 +404,8 @@ void loop() {
         //REVIEW PASSIVE PARAMETERS OR RUN
           LCDclear();
           LCDHome();
-          lcd.print(" Press: A to Review ");
-          lcd.print(" Press: B to Start ");
+          lcd.print(" PRESS: A to Review ");
+          lcd.print(" PRESS: B to Start ");
           while(1){
               delay(200);
               
@@ -459,8 +472,8 @@ void loop() {
               //REVIEW PASSIVE PARAMETERS OR RUN Fixed Ratio
                 LCDclear();
                 LCDHome();
-                lcd.print(" Press: A to Review ");
-                lcd.print(" Press: B to Start ");
+                lcd.print(" PRESS: A to Review ");
+                lcd.print(" PRESS: B to Start ");
                 while(1){
                    delay(200);
                    
@@ -485,11 +498,11 @@ void loop() {
             //Progressive Ratio
              if((ButtonB = digitalRead(BB)) == LOW){
                   delay(100);
-                IFSessionTimeOut();  // YES or NO SessionTimeOut?  IF(YES): session ended after X time of animal inactivity. Asking for that time. IF(N0): SessionTimeOut will be bigger than Seccion Lenght. 
+                IFSessionTimeOut();  // YES or NO SessionTimeOut?  IF(YES): session ended after X time of animal inactivity. Asking for that time. IF(N0): SessionTimeOut will be bigger than Session Lenght. 
                 //SessionTimeOut();    // session ended after X time of animal inactivity. Asking for that time. 
                 LCDclear();
                 LCDHome();
-                lcd.print ("Press:");
+                lcd.print ("PRESS:");
                 LCDSetCursorPosition(1,2);
                 lcd.print("   A for Arithmetic");
                 LCDSetCursorPosition(1,3);
@@ -506,8 +519,8 @@ void loop() {
                     //REVIEW PASSIVE PARAMETERS OR RUN Geometric
                       LCDclear();
                       LCDHome();
-                      lcd.print(" Press: A to Review ");
-                      lcd.print(" Press: B to Start ");
+                      lcd.print(" PRESS: A to Review ");
+                      lcd.print(" PRESS: B to Start ");
                       while(1){
                        delay(200);
                    
@@ -534,8 +547,8 @@ void loop() {
                     //REVIEW PASSIVE PARAMETERS OR RUN Geometric
                       LCDclear();
                       LCDHome();
-                      lcd.print(" Press: A to Review ");
-                      lcd.print(" Press: B to Start ");
+                      lcd.print(" PRESS: A to Review ");
+                      lcd.print(" PRESS: B to Start ");
                       while(1){
                        delay(200);
                    

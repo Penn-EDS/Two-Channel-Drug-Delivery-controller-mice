@@ -5,9 +5,9 @@ void UserName(){
  userN:
     LCDclear();
     LCDHome();
-    lcd.print("Scann User");
+    lcd.print("Scan User:");
     LCDSetCursorPosition(1,2);
-    lcd.print((String)"USER: "+username);
+    lcd.print((String)" "+username);
     LCDSetCursorPosition(1,4);
     lcd.print("PRESS C for OK");
     
@@ -35,7 +35,7 @@ void AnimalNameActive(){
   animalN:
     LCDclear();
     LCDHome();
-    lcd.print("Scann Animal");
+    lcd.print("Scan Animal");
     LCDSetCursorPosition(1,2);
     lcd.print((String)"Animal: "+animalnameactive);
     LCDSetCursorPosition(1,4);
@@ -63,7 +63,7 @@ void DrugName(){
   drugN:
     LCDclear();
     LCDHome();
-    lcd.print("Scann Drug");
+    lcd.print("Scan Drug");
     LCDSetCursorPosition(1,2);
     lcd.print((String)"Drug: "+drugname);
     LCDSetCursorPosition(1,4);
@@ -93,7 +93,7 @@ void AnimalNamePasssive1(){
   animal1N:
     LCDclear();
     LCDHome();
-    lcd.print("Scann Animal #1");
+    lcd.print("Scan Animal #1");
     LCDSetCursorPosition(1,2);
     lcd.print((String)"Animal #1: "+animalnamepassive1);
     LCDSetCursorPosition(1,4);
@@ -121,7 +121,7 @@ void AnimalNamePasssive2(){
   animal2N:
     LCDclear();
     LCDHome();
-    lcd.print("Scann Animal #2");
+    lcd.print("Scan Animal #2");
     LCDSetCursorPosition(1,2);
     lcd.print((String)"Animal #2: "+animalnamepassive2);
     LCDSetCursorPosition(1,4);
@@ -149,7 +149,7 @@ void AnimalNamePasssive3(){
   animal3N:
     LCDclear();
     LCDHome();
-    lcd.print("Scann Animal #3");
+    lcd.print("Scan Animal #3");
     LCDSetCursorPosition(1,2);
     lcd.print((String)"Animal #3: "+animalnamepassive3);
     LCDSetCursorPosition(1,4);
@@ -176,7 +176,7 @@ void AnimalNamePasssive4(){
   animal4N:
     LCDclear();
     LCDHome();
-    lcd.print("Scann Animal #4");
+    lcd.print("Scan Animal #4");
     LCDSetCursorPosition(1,2);
     lcd.print((String)"Animal #4: "+animalnamepassive4);
     LCDSetCursorPosition(1,4);
@@ -203,7 +203,7 @@ void AnimalNamePasssive5(){
   animal5N:
     LCDclear();
     LCDHome();
-    lcd.print("Scann Animal #5");
+    lcd.print("Scan Animal #5");
     LCDSetCursorPosition(1,2);
     lcd.print((String)"Animal #5: "+animalnamepassive5);
     LCDSetCursorPosition(1,4);
@@ -230,7 +230,7 @@ void AnimalNamePasssive6(){
   animal6N:
     LCDclear();
     LCDHome();
-    lcd.print("Scann Animal #6");
+    lcd.print("Scan Animal #6");
     LCDSetCursorPosition(1,2);
     lcd.print((String)"Animal #6: "+animalnamepassive6);
     LCDSetCursorPosition(1,4);
@@ -257,7 +257,7 @@ void AnimalNamePasssive7(){
   animal7N:
     LCDclear();
     LCDHome();
-    lcd.print("Scann Animal #7");
+    lcd.print("Scan Animal #7");
     LCDSetCursorPosition(1,2);
     lcd.print((String)"Animal #7: "+animalnamepassive7);
     LCDSetCursorPosition(1,4);
@@ -284,7 +284,7 @@ void AnimalNamePasssive8(){
   animal8N:
     LCDclear();
     LCDHome();
-    lcd.print("Scann Animal #8");
+    lcd.print("Scan Animal #8");
     LCDSetCursorPosition(1,2);
     lcd.print((String)"Animal #8: "+animalnamepassive8);
     LCDSetCursorPosition(1,4);
