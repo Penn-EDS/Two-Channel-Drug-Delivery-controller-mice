@@ -109,7 +109,7 @@ int BC = 6; // Button C to pin 6
 int BD = 5; // Button D to pin 5
 int BA = 4; // Button A to pin 4
 
-int vape1=9;   // Pin 9 assigned to vape1 signal
+int vape1=23;   // Pin 13 assigned to vape1 signal
 int vape2=2;  // Pin 2 assigned to vape2 signal
 int LED1=12;   // LED1
 int LED2=11;   // LED2
@@ -219,7 +219,7 @@ void setup()
     pinMode(BB,INPUT_PULLUP); // button B
     pinMode(BC,INPUT_PULLUP); // button C
     pinMode(BD,INPUT_PULLUP); // button D
-    pinMode(vape1,OUTPUT);    // vape 1 pin 9 
+    pinMode(vape1,OUTPUT);    // vape 1 pin 23 
     pinMode(vape2,OUTPUT);    // vape 2 pin 2
     pinMode(LED1,OUTPUT);
     pinMode(LED2,OUTPUT);

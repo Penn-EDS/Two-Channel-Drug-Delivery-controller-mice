@@ -16,45 +16,45 @@ void FixedRatioStart(){
   myFile.println((String)"Drug: "+drugname);
   myFile.println((String)"Animal: "+animalnameactive);
 
-  Serial.println("Schedule: Fixed Ratio");
+  myFile.println("Schedule: Fixed Ratio");
   
   if(LED1status==1){
-  Serial.println("Cue Light1(LED1): Y");
+  myFile.println("Cue Light1(LED1): Y");
    }
  else {
-  Serial.println("Cue Light1(LED1): N");
+  myFile.println("Cue Light1(LED1): N");
    }
  
  if(LED2status==1){
-  Serial.println("Cue Light2(LED2): Y");
+  myFile.println("Cue Light2(LED2): Y");
    }
  else {
-  Serial.println("Cue Light2(LED2): N");
+  myFile.println("Cue Light2(LED2): N");
    }
    
    
  if(primingpuff==1){
-  Serial.println((String)"Priming puff: Y");
-  Serial.println((String)"priming Vaporizer: "+whichvapepriming);
+  myFile.println((String)"Priming puff: Y");
+  myFile.println((String)"priming Vaporizer: "+whichvapepriming);
    }
  else {
-  Serial.println("Priming puff: N");
+  myFile.println("Priming puff: N");
    }
-  Serial.println((String)"Max # Puff: "+ PuffMaxQuantity);
-  Serial.println((String)"Active vaporizer: "+whichvapeactive);
+  myFile.println((String)"Max # Puff: "+ PuffMaxQuantity);
+  myFile.println((String)"Active vaporizer: "+whichvapeactive);
   
 
- Serial.println((String)"Session Duration(h:m): "+SessionLengthHours+":"+SessionLengthMinutes);
- Serial.println((String)"Ratio: Fixed Ratio "+fixedresponseratio);
- Serial.println((String)"TOD(s):"+ Postresponsetimeout);
- Serial.println((String)"Vape Time(ms):"+ Puffmiliseconds);
-Serial.println("----------------------------");
-Serial.println("TIME(ms), Action, Unit");
+ myFile.println((String)"Session Duration(h:m): "+SessionLengthHours+":"+SessionLengthMinutes);
+ myFile.println((String)"Ratio: Fixed Ratio "+fixedresponseratio);
+ myFile.println((String)"TOD(s):"+ Postresponsetimeout);
+ myFile.println((String)"Vape Time(ms):"+ Puffmiliseconds);
+myFile.println("----------------------------");
+myFile.println("TIME(ms), Action, Unit");
  
 SpinNottriggercheck = fixedresponseratio;
-Serial.println((String) millis()+", B");
+myFile.println((String) millis()+", B");
  PrimingExecution();
-Serial.println((String) millis()+", T");
+myFile.println((String) millis()+", T");
    
  
 previoustime = millis();
@@ -66,17 +66,17 @@ drug=1;
     if(W1Turn>= fixedresponseratio){
      W1Turn=0;
       digitalWrite(vape1,HIGH);
-      Serial.println((String) millis()+", P"+", 1");
+      myFile.println((String) millis()+", P"+", 1");
       R1=1;
       
       if(LED1status==1){
         digitalWrite(LED1,HIGH);
-        Serial.println((String) millis()+", S"+", 1");
+        myFile.println((String) millis()+", S"+", 1");
         L1=1;
       }
       delay(Puffmiliseconds);
       digitalWrite(vape1,LOW);
-      Serial.println((String) millis()+", xp"+", 1");
+      myFile.println((String) millis()+", xp"+", 1");
       PostResponseTimeOutExecution();  //post Response time out need to be a counter because is neccesary to record the wheel spins 
       Numpuffcounter=Numpuffcounter + 1;
      }
@@ -85,24 +85,24 @@ drug=1;
     if(W2Turn>= fixedresponseratio){
       W2Turn=0;
       digitalWrite(vape2,HIGH);
-      Serial.println((String) millis()+", P"+", 2");
+      myFile.println((String) millis()+", P"+", 2");
       R2=1;
       
       if(LED2status==1){
         digitalWrite(LED2,HIGH);
-        Serial.println((String) millis()+", S"+", 2");
+        myFile.println((String) millis()+", S"+", 2");
         L2=1;
       }
       delay(Puffmiliseconds);
       digitalWrite(vape2,LOW);
-      Serial.println((String) millis()+", xp"+", 2"); 
+      myFile.println((String) millis()+", xp"+", 2"); 
       PostResponseTimeOutExecution();
       Numpuffcounter=Numpuffcounter + 1;
     }
   
 
   }
- Serial.println((String) millis()+", E");
+ myFile.println((String) millis()+", E");
  
  if(digitalRead(BB)==LOW){
    LCDclear();
@@ -110,10 +110,11 @@ drug=1;
    lcd.print("Fixed Ratio Seccion");
    LCDSetCursorPosition(1,2);
    lcd.print("     CANCELLED     ");
-   Serial.println("THIS SECCION WAS CANCELLED");
+   myFile.println("THIS SECCION WAS CANCELLED");
+   myFile.close();
    delay(3000);
   }
-  
+  myFile.close();
 }
 
 
@@ -137,52 +138,52 @@ void ArithmeticRatioStart(){
   myFile.println((String)"Drug: "+drugname);
   myFile.println((String)"Animal: "+animalnameactive);
   
-  Serial.println("Schedule: Arithmetic Ratio");
+  myFile.println("Schedule: Arithmetic Ratio");
   
   if(LED1status==1){
-  Serial.println("Cue Light1(LED1): Y");
+  myFile.println("Cue Light1(LED1): Y");
  }
  else {
-  Serial.println("Cue Light1(LED1): N");
+  myFile.println("Cue Light1(LED1): N");
  }
  
  if(LED2status==1){
-  Serial.println("Cue Light2(LED2): Y");
+  myFile.println("Cue Light2(LED2): Y");
  }
  else {
-  Serial.println("Cue Light2(LED2): N");
+  myFile.println("Cue Light2(LED2): N");
  }
 
   
  if(primingpuff==1){
-  Serial.println((String)"Priming puff: Y");
-  Serial.println((String)"priming Vaporizer: "+whichvapepriming);
+  myFile.println((String)"Priming puff: Y");
+  myFile.println((String)"priming Vaporizer: "+whichvapepriming);
    }
  else {
-  Serial.println("Priming puff: N");
+  myFile.println("Priming puff: N");
    }
-  Serial.println((String)"Max # Puff: "+ PuffMaxQuantity);
-  Serial.println((String)"Active vaporizer: "+whichvapeactive);
+  myFile.println((String)"Max # Puff: "+ PuffMaxQuantity);
+  myFile.println((String)"Active vaporizer: "+whichvapeactive);
   
 
- Serial.println((String)"Session Duration(h:m): "+SessionLengthHours+":"+SessionLengthMinutes);
- Serial.println((String)"Ratio: Arithmetic Constant: "+ArithmeticConstant);
- Serial.println((String)"TOD(s):"+ Postresponsetimeout);
- Serial.println((String)"Vape Time(ms):"+ Puffmiliseconds);
+ myFile.println((String)"Session Duration(h:m): "+SessionLengthHours+":"+SessionLengthMinutes);
+ myFile.println((String)"Ratio: Arithmetic Constant: "+ArithmeticConstant);
+ myFile.println((String)"TOD(s):"+ Postresponsetimeout);
+ myFile.println((String)"Vape Time(ms):"+ Puffmiliseconds);
  
  if (ifSessionTimeOut==1){
- Serial.println((String)"Session Time-Out(m:s):"+SessionTimeOutmin+":"+SessionTimeOutsec);
+ myFile.println((String)"Session Time-Out(m:s):"+SessionTimeOutmin+":"+SessionTimeOutsec);
    }
  else {
-  Serial.println("Session Time-Out(m:s): OFF");
+  myFile.println("Session Time-Out(m:s): OFF");
   }
   
-Serial.println("----------------------------");
-Serial.println("TIME(ms), Action, Unit");
+myFile.println("----------------------------");
+myFile.println("TIME(ms), Action, Unit");
 
-Serial.println((String) millis()+", B");
+myFile.println((String) millis()+", B");
  PrimingExecution();
-Serial.println((String) millis()+", T");
+myFile.println((String) millis()+", T");
  
 previoustime = millis();
 previousSeccionTimeout= millis();
@@ -197,7 +198,7 @@ drug=1;
      W1Turn=0;
      previousSeccionTimeout = millis();
       digitalWrite(vape1,HIGH);
-      Serial.println((String) millis()+", P"+", 1");
+      myFile.println((String) millis()+", P"+", 1");
       R1=1;
       ArithmeticConstantSum1=ArithmeticConstantSum1 + ArithmeticConstant;
       LCDSetCursorPosition(1,4);
@@ -207,12 +208,12 @@ drug=1;
       
       if(LED1status==1){
         digitalWrite(LED1,HIGH);
-        Serial.println((String) millis()+", S"+", 1");
+        myFile.println((String) millis()+", S"+", 1");
         L1=1;
       }
       delay(Puffmiliseconds);
       digitalWrite(vape1,LOW);
-      Serial.println((String) millis()+", xp"+", 1");
+      myFile.println((String) millis()+", xp"+", 1");
       PostResponseTimeOutExecution();  //post Response time out need to be a counter because is neccesary to record the wheel spins 
       Numpuffcounter=Numpuffcounter + 1;
      }
@@ -222,7 +223,7 @@ drug=1;
       W2Turn=0;
       previousSeccionTimeout = millis();
       digitalWrite(vape2,HIGH);
-      Serial.println((String) millis()+", P"+", 2");
+      myFile.println((String) millis()+", P"+", 2");
       R2=1;
       ArithmeticConstantSum2=ArithmeticConstantSum2 + ArithmeticConstant;
       LCDSetCursorPosition(1,4);
@@ -232,19 +233,19 @@ drug=1;
       
       if(LED2status==1){
         digitalWrite(LED2,HIGH);
-        Serial.println((String) millis()+", S"+", 2");
+        myFile.println((String) millis()+", S"+", 2");
         L2=1;
       }
       delay(Puffmiliseconds);
       digitalWrite(vape2,LOW);
-      Serial.println((String) millis()+", xp"+", 2"); 
+      myFile.println((String) millis()+", xp"+", 2"); 
       PostResponseTimeOutExecution();
       Numpuffcounter=Numpuffcounter + 1;
     }
   
 
   }
- Serial.println((String) millis()+", E");
+ myFile.println((String) millis()+", E");
 
  if(digitalRead(BB)==LOW){
    LCDclear();
@@ -252,10 +253,11 @@ drug=1;
    lcd.print("Arithmetic Seccion");
    LCDSetCursorPosition(1,2);
    lcd.print("     CANCELLED     ");
-   Serial.println("THIS SECCION WAS CANCELLED");
+   myFile.println("THIS SECCION WAS CANCELLED");
+   myFile.close();
    delay(3000);
   }
-  
+  myFile.close();
 }
 
 
@@ -279,52 +281,52 @@ void GeometricRatioStart(){
   myFile.println((String)"Drug: "+drugname);
   myFile.println((String)"Animal: "+animalnameactive);
   
-  Serial.println("Schedule: Geometric Ratio");
+  myFile.println("Schedule: Geometric Ratio");
   
   if(LED1status==1){
-  Serial.println("Cue Light1(LED1): Y");
+  myFile.println("Cue Light1(LED1): Y");
  }
  else {
-  Serial.println("Cue Light1(LED1): N");
+  myFile.println("Cue Light1(LED1): N");
  }
  
  if(LED2status==1){
-  Serial.println("Cue Light2(LED2): Y");
+  myFile.println("Cue Light2(LED2): Y");
  }
  else {
-  Serial.println("Cue Light2(LED2): N");
+  myFile.println("Cue Light2(LED2): N");
  }
 
   
  if(primingpuff==1){
-  Serial.println((String)"Priming puff: Y");
-  Serial.println((String)"priming Vaporizer: "+whichvapepriming);
+  myFile.println((String)"Priming puff: Y");
+  myFile.println((String)"priming Vaporizer: "+whichvapepriming);
    }
  else {
-  Serial.println("Priming puff: N");
+  myFile.println("Priming puff: N");
    }
-  Serial.println((String)"Max # Puff: "+ PuffMaxQuantity);
-  Serial.println((String)"Active vaporizer: "+whichvapeactive);
+  myFile.println((String)"Max # Puff: "+ PuffMaxQuantity);
+  myFile.println((String)"Active vaporizer: "+whichvapeactive);
   
 
- Serial.println((String)"Session Duration(h:m): "+SessionLengthHours+":"+SessionLengthMinutes);
- Serial.println((String)"Ratio: #wheelturn=[5*e^(R*0.2)]-5 , Where R=# of Reinforcers");
- Serial.println((String)"TOD(s):"+ Postresponsetimeout);
- Serial.println((String)"Vape Time(ms):"+ Puffmiliseconds);
+ myFile.println((String)"Session Duration(h:m): "+SessionLengthHours+":"+SessionLengthMinutes);
+ myFile.println((String)"Ratio: #wheelturn=[5*e^(R*0.2)]-5 , Where R=# of Reinforcers");
+ myFile.println((String)"TOD(s):"+ Postresponsetimeout);
+ myFile.println((String)"Vape Time(ms):"+ Puffmiliseconds);
 
  if (ifSessionTimeOut==1){
- Serial.println((String)"Session Time-Out(m:s):"+SessionTimeOutmin+":"+SessionTimeOutsec);
+ myFile.println((String)"Session Time-Out(m:s):"+SessionTimeOutmin+":"+SessionTimeOutsec);
    }
  else {
-  Serial.println("Session Time-Out(m:s): OFF");
+  myFile.println("Session Time-Out(m:s): OFF");
   }
   
-Serial.println("----------------------------");
-Serial.println("TIME(ms), Action, Unit");
+myFile.println("----------------------------");
+myFile.println("TIME(ms), Action, Unit");
  
-Serial.println((String) millis()+", B");
+myFile.println((String) millis()+", B");
  PrimingExecution();
-Serial.println((String) millis()+", T");
+myFile.println((String) millis()+", T");
  
 previoustime = millis();
 previousSeccionTimeout= millis();
@@ -343,7 +345,7 @@ drug=1;
      W1Turn=0;
      previousSeccionTimeout = millis();
       digitalWrite(vape1,HIGH);
-      Serial.println((String) millis()+", P"+", 1");
+      myFile.println((String) millis()+", P"+", 1");
       R1 = 1;
       RG1 = RG1 + 1;
       WG1 = round((5*exp(RG1*0.2)) - 5);
@@ -357,12 +359,12 @@ drug=1;
       
       if(LED1status==1){
         digitalWrite(LED1,HIGH);
-        Serial.println((String) millis()+", S"+", 1");
+        myFile.println((String) millis()+", S"+", 1");
         L1=1;
       }
       delay(Puffmiliseconds);
       digitalWrite(vape1,LOW);
-      Serial.println((String) millis()+", xp"+", 1");
+      myFile.println((String) millis()+", xp"+", 1");
       PostResponseTimeOutExecution();  //post Response time out need to be a counter because is neccesary to record the wheel spins 
       Numpuffcounter=Numpuffcounter + 1;
      }
@@ -372,7 +374,7 @@ drug=1;
       W2Turn=0;
       previousSeccionTimeout = millis();
       digitalWrite(vape2,HIGH);
-      Serial.println((String) millis()+", P"+", 2");
+      myFile.println((String) millis()+", P"+", 2");
       R2=1;
       RG2=RG2 + 1;
       WG2 = round((5*exp(RG2*0.2)) - 5);
@@ -384,19 +386,19 @@ drug=1;
       
       if(LED2status==1){
         digitalWrite(LED2,HIGH);
-        Serial.println((String) millis()+", S"+", 2");
+        myFile.println((String) millis()+", S"+", 2");
         L2=1;
       }
       delay(Puffmiliseconds);
       digitalWrite(vape2,LOW);
-      Serial.println((String) millis()+", xp"+", 2"); 
+      myFile.println((String) millis()+", xp"+", 2"); 
       PostResponseTimeOutExecution();
       Numpuffcounter=Numpuffcounter + 1;
     }
   
 
   }
- Serial.println((String) millis()+", E");
+ myFile.println((String) millis()+", E");
 
  if(digitalRead(BB)==LOW){
    LCDclear();
@@ -404,15 +406,16 @@ drug=1;
    lcd.print("Geometric Seccion");
    LCDSetCursorPosition(1,2);
    lcd.print("     CANCELLED     ");
-   Serial.println("THIS SECCION WAS CANCELLED");
+   myFile.println("THIS SECCION WAS CANCELLED");
+   myFile.close();
    delay(3000);
   }
- 
+ myFile.close();
 }
 
 
 void PostResponseTimeOutExecution(){  //post Response time out need to be a counter because is neccesary to record the wheel spins
-  Serial.println((String) millis()+", xt");
+  myFile.println((String) millis()+", xt");
   
   
    LCDSetCursorPosition(1,3);
@@ -433,18 +436,18 @@ void PostResponseTimeOutExecution(){  //post Response time out need to be a coun
 
     
   }
-    Serial.println((String) millis()+", T");
+    myFile.println((String) millis()+", T");
   
   
    if(L1==1){
         digitalWrite(LED1,LOW);
-        Serial.println((String) millis()+", xs"+", 1");
+        myFile.println((String) millis()+", xs"+", 1");
         L1=0;
       }
   
    if(L2==1){
         digitalWrite(LED2,LOW);
-        Serial.println((String) millis()+", xs"+", 2");
+        myFile.println((String) millis()+", xs"+", 2");
         L2=0;
       }
 }
@@ -455,16 +458,16 @@ void PrimingExecution(){
   if(primingpuff==1){
     drug=1;
       digitalWrite(vapepriming,HIGH);
-      Serial.println((String) millis()+", P"+", "+whichvapepriming);
+      myFile.println((String) millis()+", P"+", "+whichvapepriming);
       digitalWrite(LEDpriming,LEDstatuspriming);
       if(LEDstatuspriming==1){
-        Serial.println((String) millis()+", S"+", "+whichvapepriming);
+        myFile.println((String) millis()+", S"+", "+whichvapepriming);
       }
       delay(Puffmiliseconds);
       digitalWrite(vapepriming,LOW);
       digitalWrite(LEDpriming,LOW);
-      Serial.println((String) millis()+", xp"+", "+whichvapepriming);
-      Serial.println((String) millis()+", xs"+", "+whichvapepriming);
+      myFile.println((String) millis()+", xp"+", "+whichvapepriming);
+      myFile.println((String) millis()+", xs"+", "+whichvapepriming);
   }
 
 }

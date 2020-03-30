@@ -30,7 +30,6 @@ myFile.println((String)"Animal #6: "+animalnamepassive6);
 myFile.println((String)"Animal #7: "+animalnamepassive7);
 myFile.println((String)"Animal #8: "+animalnamepassive8);
 
-
 drug=0;
 Numpuffcounter=1;
 delay(300);
@@ -93,6 +92,7 @@ while(Numpuffcounter <= PuffMaxQuantity){   //  passive vaping code
   
 }
 cancelpassive:
+myFile.close();
 delay(100);
 }
 
