@@ -16,6 +16,7 @@ char filename[15];//array for the file name
 int device=01;         // up to 99 devices
 const int SDcs = 22;  //SD slave pin 
 const int USBcs=10;   //USB slave pin
+int SDcounter=0;
 int readed = 0;
 String barcodeword="";
 String username="";
@@ -223,6 +224,13 @@ void setup()
     pinMode(vape2,OUTPUT);    // vape 2 pin 2
     pinMode(LED1,OUTPUT);
     pinMode(LED2,OUTPUT);
+    pinMode(USBcs,OUTPUT);
+    pinMode(SDcs,OUTPUT);
+
+    digitalWrite(SDcs,HIGH);
+    digitalWrite(USBcs,HIGH);
+
+    
   
     // ** to use in Active mode **// 
     Wheel1State=digitalRead(W1);
@@ -254,22 +262,19 @@ void setup()
     // go 'home'
     LCDHome();
      
-    delay(1500);
 
     lcd.println("DRUG ACTIVE_PASSIVE");
     lcd.println("Administration And");            // to print the custom character, 'write' the location
     lcd.print("Monitoring Device");
-    delay(10);
-
+    
     // set cursor position 
      LCDSetCursorPosition(18,3);
-     delay(2000);
+     delay(3000);
      
     // Move Cursor. For forware Write "F" and for Back Write "B" 
     //LCDMoveCursor("F") 
-      delay(1000);
+      
       LCDRGBColor(0,255,0);
-      delay(2000);
       LCDclear();
 
       if (! rtc.begin()) {
@@ -303,9 +308,6 @@ void setup()
 
 
 //---------USB host initialization--------
-          pinMode(USBcs,OUTPUT);
-          pinMode(SDcs,OUTPUT);
-
           digitalWrite(SDcs,HIGH);
           digitalWrite(USBcs,LOW);
         
@@ -321,10 +323,13 @@ void setup()
           digitalWrite(SDcs,LOW);
         //--------USB initialization Done-------
         
-          delay(1000);
+          delay(100);
           
         //------SD card initialization------------   
-          if (!SD.begin(SDcs)) {
+          SDcounter=millis();
+          while(!SD.begin(SDcs)){
+            
+            if (millis()-SDcounter >= 3000) {
             LCDclear();
             LCDHome();
             lcd.print("SD failed!");
@@ -334,17 +339,16 @@ void setup()
             lcd.print("Restart Device");
             LCDSetCursorPosition(1,4);
             lcd.print("Or Call EDS_UPENN");
-            
-            while (1);
-            }
+            while(1);
+             }
+             
+          }
 
             //LCDclear();
             //LCDHome();
             //lcd.print("SD Done.");
             //delay(2000);
           
-           
-        
           digitalWrite(SDcs,HIGH);
           digitalWrite(USBcs,LOW);
          //------SD card initialization DONE------------ 
