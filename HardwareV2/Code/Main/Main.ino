@@ -212,6 +212,8 @@ unsigned long WG2=1;
 
 void setup()
 {
+
+    delay(1500);         // waiting for the lcd to be ready
     Serial.begin(9600);
     lcd.begin(9600);
     pinMode(W1, INPUT_PULLUP);  //wheel1 pin 8, 20K pullup
@@ -237,6 +239,7 @@ void setup()
     Wheel2State=digitalRead(W2);
     lastWheel1State = Wheel1State;
     lastWheel2State = Wheel2State;
+
   
     // set  backlight on("ON")  or off("OFF")
     LCDBacklight("ON");
@@ -255,20 +258,17 @@ void setup()
 
     // turn off/on cursors on("ON")  or off("OFF")
     LCDcursor_Enable_Disable("ON");
-
-    // clear LCD
-    LCDclear();
-  
-    // go 'home'
-    LCDHome();
-     
-
-    lcd.println("DRUG ACTIVE_PASSIVE");
-    lcd.println("Administration And");            // to print the custom character, 'write' the location
-    lcd.print("Monitoring Device");
     
-    // set cursor position 
-     LCDSetCursorPosition(18,3);
+  
+    
+    LCDclear();  // clear LCD
+    LCDHome(); // go 'home'
+    lcd.print("DRUG ACTIVE_PASSIVE");
+    LCDSetCursorPosition(1,2);
+    lcd.print("Administration And");
+    LCDSetCursorPosition(1,3);            
+    lcd.print("Monitoring Device");
+    LCDSetCursorPosition(1,4);
      delay(3000);
      
     // Move Cursor. For forware Write "F" and for Back Write "B" 

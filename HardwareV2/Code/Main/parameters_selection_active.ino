@@ -138,7 +138,7 @@ void CueLight(){
     lcd.print(" LED1:");
     lcd.print("ON");
     LCDSetCursorPosition(1,3);
-    lcd.print("PRESS: A(ON) , B(OFF)");
+    lcd.print("PRESS: A(ON), B(OFF)");
     LCDSetCursorPosition(1,4);
     lcd.print("PRESS C for OK");
    }
@@ -150,7 +150,7 @@ void CueLight(){
       lcd.print(" LED1:");
       lcd.print("OFF");
       LCDSetCursorPosition(1,3);
-      lcd.print("PRESS: A(ON) , B(OFF)");
+      lcd.print("PRESS: A(ON), B(OFF)");
       LCDSetCursorPosition(1,4);
       lcd.print("PRESS C for OK");
   }
@@ -169,7 +169,7 @@ void CueLight(){
       lcd.print("ON");
       LED1status=1;
       LCDSetCursorPosition(1,3);
-      lcd.print("PRESS: A(ON) , B(OFF)");
+      lcd.print("PRESS: A(ON), B(OFF)");
       LCDSetCursorPosition(1,4);
       lcd.print("PRESS C for OK");
     }
@@ -182,7 +182,7 @@ void CueLight(){
       lcd.print("OFF");
       LED1status=0;
       LCDSetCursorPosition(1,3);
-      lcd.print("PRESS: A(ON) , B(OFF)");
+      lcd.print("PRESS: A(ON), B(OFF)");
       LCDSetCursorPosition(1,4);
       lcd.print("PRESS C for OK");
     
@@ -202,7 +202,7 @@ delay(300);
     lcd.print("ON");
     LED2status=1;
     LCDSetCursorPosition(1,3);
-    lcd.print("PRESS: A(ON) , B(OFF)");
+    lcd.print("PRESS: A(ON), B(OFF)");
     LCDSetCursorPosition(1,4);
     lcd.print("PRESS C for OK");
    }
@@ -215,7 +215,7 @@ delay(300);
       lcd.print("OFF");
       LED2status=0;
       LCDSetCursorPosition(1,3);
-      lcd.print("PRESS: A(ON) , B(OFF)");
+      lcd.print("PRESS: A(ON), B(OFF)");
       LCDSetCursorPosition(1,4);
       lcd.print("PRESS C for OK");
   }
@@ -234,7 +234,7 @@ delay(300);
       lcd.print("ON");
       LED2status=1;
       LCDSetCursorPosition(1,3);
-      lcd.print("PRESS: A(ON) , B(OFF)");
+      lcd.print("PRESS: A(ON), B(OFF)");
       LCDSetCursorPosition(1,4);
       lcd.print("PRESS C for OK");
     }
@@ -247,7 +247,7 @@ delay(300);
       lcd.print("OFF");
       LED2status=0;
       LCDSetCursorPosition(1,3);
-      lcd.print("PRESS: A(ON) , B(OFF)");
+      lcd.print("PRESS: A(ON), B(OFF)");
       LCDSetCursorPosition(1,4);
       lcd.print("PRESS C for OK");
     
