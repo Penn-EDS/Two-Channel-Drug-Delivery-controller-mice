@@ -14,42 +14,42 @@ void FixedRatioStart(){
   
   CreateFile();
   RTCDateTime();
-  myFile.println((String)"USER :"+username);
-  myFile.println((String)"Drug: "+drugname);
-  myFile.println((String)"Animal: "+animalnameactive);
+  myFile.println((String)"USER:,"+username);
+  myFile.println((String)"Drug:,"+drugname);
+  myFile.println((String)"Animal:,"+animalnameactive);
 
-  myFile.println("Schedule: Fixed Ratio");
+  myFile.println("Schedule:,Fixed Ratio");
   
   if(LED1status==1){
-  myFile.println("Cue Light1(LED1): Y");
+  myFile.println("Cue Light1(LED1):,Y");
    }
  else {
-  myFile.println("Cue Light1(LED1): N");
+  myFile.println("Cue Light1(LED1):,N");
    }
  
  if(LED2status==1){
-  myFile.println("Cue Light2(LED2): Y");
+  myFile.println("Cue Light2(LED2):,Y");
    }
  else {
-  myFile.println("Cue Light2(LED2): N");
+  myFile.println("Cue Light2(LED2):,N");
    }
    
    
  if(primingpuff==1){
-  myFile.println((String)"Priming puff: Y");
-  myFile.println((String)"priming Vaporizer: "+whichvapepriming);
+  myFile.println((String)"Priming puff:,Y");
+  myFile.println((String)"priming Vaporizer:,"+whichvapepriming);
    }
  else {
-  myFile.println("Priming puff: N");
+  myFile.println("Priming puff:,N");
    }
-  myFile.println((String)"Max # Puff: "+ PuffMaxQuantity);
-  myFile.println((String)"Active vaporizer: "+whichvapeactive);
+  myFile.println((String)"Max # Puff:,"+ PuffMaxQuantity);
+  myFile.println((String)"Active vaporizer:,"+whichvapeactive);
   
 
- myFile.println((String)"Session Duration(h:m): "+SessionLengthHours+":"+SessionLengthMinutes);
- myFile.println((String)"Ratio: Fixed Ratio "+fixedresponseratio);
- myFile.println((String)"TOD(s):"+ Postresponsetimeout);
- myFile.println((String)"Vape Time(ms):"+ Puffmiliseconds);
+ myFile.println((String)"Session Duration(h:m):,"+SessionLengthHours+":"+SessionLengthMinutes);
+ myFile.println((String)"Ratio:,Fixed Ratio,"+fixedresponseratio);
+ myFile.println((String)"TOD(s):,"+ Postresponsetimeout);
+ myFile.println((String)"Vape Time(ms):,"+ Puffmiliseconds);
 myFile.println("----------------------------");
 myFile.println("TIME(ms), Action, Unit");
  
@@ -112,7 +112,7 @@ drug=1;
    lcd.print("Fixed Ratio Session");
    LCDSetCursorPosition(1,2);
    lcd.print("     CANCELLED     ");
-   myFile.println("THIS Session WAS CANCELLED");
+   myFile.println("THIS SESSION WAS CANCELLED");
    myFile.close();
    delay(3000);
   }
@@ -138,48 +138,48 @@ void ArithmeticRatioStart(){
   
   CreateFile();
   RTCDateTime();
-  myFile.println((String)"USER :"+username);
-  myFile.println((String)"Drug: "+drugname);
-  myFile.println((String)"Animal: "+animalnameactive);
+  myFile.println((String)"USER:,"+username);
+  myFile.println((String)"Drug:,"+drugname);
+  myFile.println((String)"Animal:,"+animalnameactive);
   
-  myFile.println("Schedule: Arithmetic Ratio");
+  myFile.println("Schedule:,Arithmetic Ratio");
   
   if(LED1status==1){
-  myFile.println("Cue Light1(LED1): Y");
+  myFile.println("Cue Light1(LED1):,Y");
  }
  else {
-  myFile.println("Cue Light1(LED1): N");
+  myFile.println("Cue Light1(LED1):,N");
  }
  
  if(LED2status==1){
-  myFile.println("Cue Light2(LED2): Y");
+  myFile.println("Cue Light2(LED2):,Y");
  }
  else {
-  myFile.println("Cue Light2(LED2): N");
+  myFile.println("Cue Light2(LED2):,N");
  }
 
   
  if(primingpuff==1){
-  myFile.println((String)"Priming puff: Y");
-  myFile.println((String)"priming Vaporizer: "+whichvapepriming);
+  myFile.println((String)"Priming puff:,Y");
+  myFile.println((String)"priming Vaporizer:,"+whichvapepriming);
    }
  else {
-  myFile.println("Priming puff: N");
+  myFile.println("Priming puff:,N");
    }
-  myFile.println((String)"Max # Puff: "+ PuffMaxQuantity);
-  myFile.println((String)"Active vaporizer: "+whichvapeactive);
+  myFile.println((String)"Max # Puff:,"+ PuffMaxQuantity);
+  myFile.println((String)"Active vaporizer:,"+whichvapeactive);
   
 
- myFile.println((String)"Session Duration(h:m): "+SessionLengthHours+":"+SessionLengthMinutes);
- myFile.println((String)"Ratio: Arithmetic Constant: "+ArithmeticConstant);
- myFile.println((String)"TOD(s):"+ Postresponsetimeout);
- myFile.println((String)"Vape Time(ms):"+ Puffmiliseconds);
+ myFile.println((String)"Session Duration(h:m):,"+SessionLengthHours+":"+SessionLengthMinutes);
+ myFile.println((String)"Ratio: Arithmetic Constant:,"+ArithmeticConstant);
+ myFile.println((String)"TOD(s):,"+ Postresponsetimeout);
+ myFile.println((String)"Vape Time(ms):,"+ Puffmiliseconds);
  
  if (ifSessionTimeOut==1){
- myFile.println((String)"Session Time-Out(m:s):"+SessionTimeOutmin+":"+SessionTimeOutsec);
+ myFile.println((String)"Session Time-Out(m:s):,"+SessionTimeOutmin+":"+SessionTimeOutsec);
    }
  else {
-  myFile.println("Session Time-Out(m:s): OFF");
+  myFile.println("Session Time-Out(m:s):,OFF");
   }
   
 myFile.println("----------------------------");
@@ -257,7 +257,7 @@ drug=1;
    lcd.print("Arithmetic Session");
    LCDSetCursorPosition(1,2);
    lcd.print("     CANCELLED     ");
-   myFile.println("THIS Session WAS CANCELLED");
+   myFile.println("THIS SESSION WAS CANCELLED");
    myFile.close();
    delay(3000);
   }
@@ -287,48 +287,48 @@ void GeometricRatioStart(){
 
   CreateFile();
   RTCDateTime();
-  myFile.println((String)"USER :"+username);
-  myFile.println((String)"Drug: "+drugname);
-  myFile.println((String)"Animal: "+animalnameactive);
+  myFile.println((String)"USER:,"+username);
+  myFile.println((String)"Drug:,"+drugname);
+  myFile.println((String)"Animal:,"+animalnameactive);
   
-  myFile.println("Schedule: Geometric Ratio");
+  myFile.println("Schedule:,Geometric Ratio");
   
   if(LED1status==1){
-  myFile.println("Cue Light1(LED1): Y");
+  myFile.println("Cue Light1(LED1):,Y");
  }
  else {
-  myFile.println("Cue Light1(LED1): N");
+  myFile.println("Cue Light1(LED1):,N");
  }
  
  if(LED2status==1){
-  myFile.println("Cue Light2(LED2): Y");
+  myFile.println("Cue Light2(LED2):,Y");
  }
  else {
-  myFile.println("Cue Light2(LED2): N");
+  myFile.println("Cue Light2(LED2):,N");
  }
 
   
  if(primingpuff==1){
-  myFile.println((String)"Priming puff: Y");
-  myFile.println((String)"priming Vaporizer: "+whichvapepriming);
+  myFile.println((String)"Priming puff:,Y");
+  myFile.println((String)"priming Vaporizer:,"+whichvapepriming);
    }
  else {
-  myFile.println("Priming puff: N");
+  myFile.println("Priming puff:,N");
    }
-  myFile.println((String)"Max # Puff: "+ PuffMaxQuantity);
-  myFile.println((String)"Active vaporizer: "+whichvapeactive);
+  myFile.println((String)"Max # Puff:,"+ PuffMaxQuantity);
+  myFile.println((String)"Active vaporizer:,"+whichvapeactive);
   
 
- myFile.println((String)"Session Duration(h:m): "+SessionLengthHours+":"+SessionLengthMinutes);
- myFile.println((String)"Ratio: #wheelturn=[5*e^(R*0.2)]-5 , Where R=# of Reinforcers");
- myFile.println((String)"TOD(s):"+ Postresponsetimeout);
- myFile.println((String)"Vape Time(ms):"+ Puffmiliseconds);
+ myFile.println((String)"Session Duration(h:m):,"+SessionLengthHours+":"+SessionLengthMinutes);
+ myFile.println((String)"Ratio:, #wheelturn=[5*e^(R*0.2)]-5  Where R=# of Reinforcers");
+ myFile.println((String)"TOD(s):,"+ Postresponsetimeout);
+ myFile.println((String)"Vape Time(ms):,"+ Puffmiliseconds);
 
  if (ifSessionTimeOut==1){
- myFile.println((String)"Session Time-Out(m:s):"+SessionTimeOutmin+":"+SessionTimeOutsec);
+ myFile.println((String)"Session Time-Out(m:s):,"+SessionTimeOutmin+":"+SessionTimeOutsec);
    }
  else {
-  myFile.println("Session Time-Out(m:s): OFF");
+  myFile.println("Session Time-Out(m:s):,OFF");
   }
   
 myFile.println("----------------------------");
@@ -412,7 +412,7 @@ drug=1;
    lcd.print("Geometric Session");
    LCDSetCursorPosition(1,2);
    lcd.print("     CANCELLED     ");
-   myFile.println("THIS Session WAS CANCELLED");
+   myFile.println("THIS SESSION WAS CANCELLED");
    myFile.close();
    delay(3000);
   }

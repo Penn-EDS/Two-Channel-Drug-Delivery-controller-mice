@@ -133,7 +133,7 @@ void LCDRGBColor(int Red , int Green,int Blue){
 void RTCDateTime(){
   
     DateTime now = rtc.now();
-    myFile.print("Date: ");
+    myFile.print("Date:,");
     myFile.print(now.year(), DEC);
     myFile.print('/');
     myFile.print(now.month(), DEC);
