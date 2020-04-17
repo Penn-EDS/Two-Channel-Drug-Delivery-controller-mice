@@ -59,7 +59,7 @@ void MyParser::Parse(USBHID *hid, bool is_rpt_id, uint8_t len, uint8_t *buf) {
     // If not, continue normally
     else {
       // If bit position not in 2, it's uppercase words
-      //OnKeyScanned(i > 2, buf, buf[i]);
+      ///OnKeyScanned(i > 2, buf, buf[i]);    // this part need to be modified to work in the max32
     }
 
     return;
