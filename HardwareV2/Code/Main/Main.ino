@@ -70,7 +70,7 @@ uint8_t MyParser::KeyToAscii(bool upper, uint8_t mod, uint8_t key) {
   // Letters
   if (VALUE_WITHIN(key, 0x04, 0x1d)) {
     if (upper) return (key - 4 + 'A');
-     else return (key - 4 + 'A');
+     else return (key - 4 + 'a');
   }
 
   // Numbers
