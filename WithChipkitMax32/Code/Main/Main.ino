@@ -1,6 +1,6 @@
 #include "RTClib.h"
 #include "Arduino.h"
-#define lcd Serial1 // with lcd serial1
+#define lcd Serial // with lcd serial1
 RTC_DS1307 rtc;
 
 //-----Scanner and SD functions and librarys----
