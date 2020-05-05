@@ -33,19 +33,10 @@ myFile.println((String)"Animal #8:,"+animalnamepassive8);
 drug=0;
 Numpuffcounter=1;
 delay(300);
-ButtonB=digitalRead(BB);
-  if (ButtonB==LOW){
-      LCDclear();
-      LCDHome();
-      lcd.print("Experiment Cancel");
-      myFile.println("THIS SESSION WAS CANCELLED");
-    delay(2000);
-    goto cancelpassive;
-  }
 puffIntinmiliseconds=(PuffIntmin*60*1000)+(PuffIntsec*1000);
 
 
-while(Numpuffcounter <= PuffMaxQuantity){   //  passive vaping code
+while(Numpuffcounter <= PuffMaxQuantity && digitalRead(BB)==HIGH){   //  passive vaping code
   drug=1;
   LCDclear();
   LCDHome();
@@ -58,15 +49,6 @@ while(Numpuffcounter <= PuffMaxQuantity){   //  passive vaping code
   lcd.print(PuffMaxQuantity);
   LCDSetCursorPosition(1,4);
   lcd.print("PRESS B to cancel");
-  ButtonB=digitalRead(BB);
-  if (ButtonB==LOW){
-      LCDclear();
-      LCDHome();
-      lcd.print("Experiment Cancel");
-      myFile.println("THIS SESSION WAS CANCELLED");
-    delay(2000);
-    goto cancelpassive;
-  }
 
   digitalWrite(vape1,HIGH);
   digitalWrite(vape2,HIGH);
@@ -76,25 +58,22 @@ while(Numpuffcounter <= PuffMaxQuantity){   //  passive vaping code
   
   puffIntcounter=0;
   
-  while(puffIntcounter<=puffIntinmiliseconds){
+  while(puffIntcounter<=puffIntinmiliseconds && digitalRead(BB)==HIGH){
     delay(100);
     puffIntcounter=puffIntcounter+100;
-    ButtonB=digitalRead(BB);
-  if (ButtonB==LOW){
-      LCDclear();
-      LCDHome();
-      lcd.print("Experiment Cancel");
-      myFile.println("THIS SESSION WAS CANCELLED");
-    delay(2000);
-    goto cancelpassive;
-  }
-    
-  }
+    }
   
   Numpuffcounter=Numpuffcounter + 1;
   
 }
-cancelpassive:
+if (digitalRead(BB)==LOW){
+      LCDclear();
+      LCDHome();
+      lcd.print("Experiment Cancel");
+      myFile.println("THIS SESSION WAS CANCELLED");
+      myFile.println((String)"# Puff Delivered:,"+ Numpuffcounter);
+    delay(2000);
+  }
 myFile.close();
 delay(100);
 }
