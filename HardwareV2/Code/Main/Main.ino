@@ -296,7 +296,7 @@ void setup()
           LCDSetCursorPosition(1,2);
           lcd.print("Call EDS_UPENN");
           rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));
-           while (1);
+           //while (1);
          }
 
   //Use one of this to Function to set the date/time of the RTC. After uplouding the code, COMMENT this two lines and RE-Upload the CODE. 
@@ -320,7 +320,7 @@ void setup()
           Hid.SetReportParser(0, &Parser);
         
           digitalWrite(USBcs,HIGH);
-          digitalWrite(SDcs,LOW);
+          digitalWrite(SDcs,HIGH);
         //--------USB initialization Done-------
         
           delay(100);
@@ -329,6 +329,7 @@ void setup()
           SDcounter=millis();
           while(!SD.begin(SDcs)){
             
+            
             if (millis()-SDcounter >= 3000) {
             LCDclear();
             LCDHome();
@@ -336,11 +337,12 @@ void setup()
             LCDSetCursorPosition(1,2);
             lcd.print("Check SD Card");
             LCDSetCursorPosition(1,3);
-            lcd.print("Restart Device");
+            lcd.print("Or Restart Device");
             LCDSetCursorPosition(1,4);
             lcd.print("Or Call EDS_UPENN");
-            while(1);
+            //while(1);
              }
+             
              
           }
 
