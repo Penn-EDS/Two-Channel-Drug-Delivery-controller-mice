@@ -420,13 +420,13 @@ void loop() {
            delay(200);
            whichvapeActive();
            delay(200);
-           Primingpuff();
-           delay(200);
            PuffLengthselect();
            delay(200);
            PostResponseTimeOut();
            delay(200);
            CueLight();
+           delay(200);
+           Primingpuff();
            delay(200);
            sessionLength();
            delay(200);

@@ -491,7 +491,10 @@ void PrimingExecution(){
       digitalWrite(vapepriming,LOW);
       digitalWrite(LEDpriming,LOW);
       myFile.println((String) millis()+", xp"+", "+whichvapepriming);
-      myFile.println((String) millis()+", xs"+", "+whichvapepriming);
+      if(LEDstatuspriming==1){
+        myFile.println((String) millis()+", xs"+", "+whichvapepriming);
+      }
+      
   }
 
 }
