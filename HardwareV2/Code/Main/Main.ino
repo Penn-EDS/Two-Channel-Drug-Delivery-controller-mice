@@ -331,7 +331,7 @@ void setup()
           delay(100);
           
         //------SD card initialization------------ 
-         SDini();
+         //SDini();
           
          //------SD card initialization DONE------------ 
 
@@ -392,6 +392,10 @@ void loop() {
           LCDHome();
           lcd.print(" PRESS: A to Review ");
           lcd.print(" PRESS: B to Start ");
+          LCDSetCursorPosition(1,3);
+          lcd.print("    Last Chance!");
+          LCDSetCursorPosition(1,4);
+          lcd.print("  Are mice in Box?");
           while(1){
               delay(200);
               
@@ -460,6 +464,12 @@ void loop() {
                 LCDHome();
                 lcd.print(" PRESS: A to Review ");
                 lcd.print(" PRESS: B to Start ");
+                LCDSetCursorPosition(1,3);
+                lcd.print("    Last Chance!");
+                LCDSetCursorPosition(1,4);
+                lcd.print("  Are mice in Box?");
+                
+                
                 while(1){
                    delay(200);
                    
@@ -507,6 +517,12 @@ void loop() {
                       LCDHome();
                       lcd.print(" PRESS: A to Review ");
                       lcd.print(" PRESS: B to Start ");
+                      LCDSetCursorPosition(1,3);
+                      lcd.print("    Last Chance!");
+                      LCDSetCursorPosition(1,4);
+                      lcd.print("  Are mice in Box?");
+                      
+                      
                       while(1){
                        delay(200);
                    
@@ -535,6 +551,10 @@ void loop() {
                       LCDHome();
                       lcd.print(" PRESS: A to Review ");
                       lcd.print(" PRESS: B to Start ");
+                      LCDSetCursorPosition(1,3);
+                      lcd.print("    Last Chance!");
+                      LCDSetCursorPosition(1,4);
+                      lcd.print("  Are mice in Box?");
                       while(1){
                        delay(200);
                    
