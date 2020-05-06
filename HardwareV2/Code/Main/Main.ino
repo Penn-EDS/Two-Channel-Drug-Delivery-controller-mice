@@ -173,9 +173,9 @@ unsigned long puffIntcounter=0;
 // Active mode variables with default values
 int primingpuff = 1;            //  1 YES   0 NO
 int whichvapepriming = 1;       // if priming yes, Which one?
-int vapepriming=vape1;              // variable part of the which priming loop
-int LEDpriming=0;               // variable part of the which priming loop
-int LEDstatuspriming=0;         // variable part of the which priming loop
+int vapepriming=vape1;              // variable part of the which priming loop  was 0 changed today 6 may 2020
+int LEDpriming=LED1;               // variable part of the which priming loop    was 0 changed today 6 may 2020
+int LEDstatuspriming=1;         // variable part of the which priming loop      
 
 int whichvapeactive=1;
 
@@ -331,7 +331,7 @@ void setup()
           delay(100);
           
         //------SD card initialization------------ 
-       SDini();
+         SDini();
           
          //------SD card initialization DONE------------ 
 
