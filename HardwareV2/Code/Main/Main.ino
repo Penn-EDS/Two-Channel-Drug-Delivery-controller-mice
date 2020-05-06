@@ -1,3 +1,4 @@
+// hardware2
 #include "RTClib.h"
 #include "Arduino.h"
 #define lcd Serial1 // with lcd serial1
