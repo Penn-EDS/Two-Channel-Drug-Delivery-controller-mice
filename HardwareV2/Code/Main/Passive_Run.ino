@@ -1,4 +1,7 @@
 void PassiveStart(){
+SDini();
+digitalWrite(SDcs,LOW);
+delay(300);
 LCDclear();
 LCDHome();
 lcd.print(" Passive Session ON ");
@@ -21,14 +24,14 @@ myFile.println((String)"Puff Length(miliseconds):,"+Puffmiliseconds);
 myFile.println((String)"Puff Interval(m:s):,"+PuffIntmin+":"+PuffIntsec);
 myFile.println((String)"Max # Puff:,"+ PuffMaxQuantity);
 
-myFile.println((String)"Animal #1:,"+animalnamepassive1);
-myFile.println((String)"Animal #2:,"+animalnamepassive2);
-myFile.println((String)"Animal #3:,"+animalnamepassive3);
-myFile.println((String)"Animal #4:,"+animalnamepassive4);
-myFile.println((String)"Animal #5:,"+animalnamepassive5);
-myFile.println((String)"Animal #6:,"+animalnamepassive6);
-myFile.println((String)"Animal #7:,"+animalnamepassive7);
-myFile.println((String)"Animal #8:,"+animalnamepassive8);
+myFile.println((String)"Animal in Box#1:,"+animalnamepassive1);
+myFile.println((String)"Animal in Box#2:,"+animalnamepassive2);
+myFile.println((String)"Animal in Box#3:,"+animalnamepassive3);
+myFile.println((String)"Animal in Box#4:,"+animalnamepassive4);
+myFile.println((String)"Animal in Box#5:,"+animalnamepassive5);
+myFile.println((String)"Animal in Box#6:,"+animalnamepassive6);
+myFile.println((String)"Animal in Box#7:,"+animalnamepassive7);
+myFile.println((String)"Animal in Box#8:,"+animalnamepassive8);
 
 drug=0;
 Numpuffcounter=1;
@@ -50,11 +53,15 @@ while(Numpuffcounter <= PuffMaxQuantity && digitalRead(BB)==HIGH){   //  passive
   LCDSetCursorPosition(1,4);
   lcd.print("PRESS B to cancel");
 
-  digitalWrite(vape1,HIGH);
-  digitalWrite(vape2,HIGH);
+  digitalWrite(vape1,HIGH); 
+  digitalWrite(vapeR1,HIGH);
+  digitalWrite(vape2,HIGH); 
+  digitalWrite(vapeR2,HIGH);
   delay(Puffmiliseconds);
-  digitalWrite(vape1,LOW);
-  digitalWrite(vape2, LOW);
+  digitalWrite(vape1,LOW); 
+  digitalWrite(vapeR1,LOW);
+  digitalWrite(vape2,LOW); 
+  digitalWrite(vapeR2,LOW);
   
   puffIntcounter=0;
   
@@ -71,6 +78,7 @@ if (digitalRead(BB)==LOW){
       LCDHome();
       lcd.print("Experiment Cancel");
       myFile.println("THIS SESSION WAS CANCELLED");
+      Numpuffcounter=Numpuffcounter-1;
       myFile.println((String)"# Puff Delivered:,"+ Numpuffcounter);
     delay(2000);
   }

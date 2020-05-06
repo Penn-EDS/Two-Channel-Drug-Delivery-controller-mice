@@ -1,4 +1,6 @@
 void FixedRatioStart(){
+  SDini();
+  digitalWrite(SDcs,LOW);
   delay(300);
   W1Turn=0;
   W2Turn=0;
@@ -16,7 +18,7 @@ void FixedRatioStart(){
   RTCDateTime();
   myFile.println((String)"USER:,"+username);
   myFile.println((String)"Drug:,"+drugname);
-  myFile.println((String)"Animal:,"+animalnameactive);
+  myFile.println((String)"Animal in Chamber:,"+animalnameactive);
 
   myFile.println("Schedule:,Fixed Ratio");
   
@@ -68,6 +70,7 @@ drug=1;
     if(W1Turn>= fixedresponseratio){
      W1Turn=0;
       digitalWrite(vape1,HIGH);
+      digitalWrite(vapeR1,HIGH);
       myFile.println((String) millis()+", P"+", 1");
       R1=1;
       
@@ -77,7 +80,8 @@ drug=1;
         L1=1;
       }
       delay(Puffmiliseconds);
-      digitalWrite(vape1,LOW);
+      digitalWrite(vape1,LOW); 
+      digitalWrite(vapeR1,LOW);
       myFile.println((String) millis()+", xp"+", 1");
       PostResponseTimeOutExecution();  //post Response time out need to be a counter because is neccesary to record the wheel spins 
       Numpuffcounter=Numpuffcounter + 1;
@@ -86,7 +90,8 @@ drug=1;
 
     if(W2Turn>= fixedresponseratio){
       W2Turn=0;
-      digitalWrite(vape2,HIGH);
+      digitalWrite(vape2,HIGH); 
+      digitalWrite(vapeR2,HIGH);
       myFile.println((String) millis()+", P"+", 2");
       R2=1;
       
@@ -96,7 +101,8 @@ drug=1;
         L2=1;
       }
       delay(Puffmiliseconds);
-      digitalWrite(vape2,LOW);
+      digitalWrite(vape2,LOW); 
+      digitalWrite(vapeR2,LOW);
       myFile.println((String) millis()+", xp"+", 2"); 
       PostResponseTimeOutExecution();
       Numpuffcounter=Numpuffcounter + 1;
@@ -122,6 +128,8 @@ drug=1;
 
 
 void ArithmeticRatioStart(){
+  SDini();
+  digitalWrite(SDcs,LOW);
   delay(300);
   W1Turn=0;
   W2Turn=0;
@@ -140,7 +148,7 @@ void ArithmeticRatioStart(){
   RTCDateTime();
   myFile.println((String)"USER:,"+username);
   myFile.println((String)"Drug:,"+drugname);
-  myFile.println((String)"Animal:,"+animalnameactive);
+  myFile.println((String)"Animal in Chamber:,"+animalnameactive);
   
   myFile.println("Schedule:,Arithmetic Ratio");
   
@@ -201,7 +209,8 @@ drug=1;
     if(W1Turn>= ArithmeticConstantSum1){
      W1Turn=0;
      previousSessionTimeout = millis();
-      digitalWrite(vape1,HIGH);
+      digitalWrite(vape1,HIGH); 
+      digitalWrite(vapeR1,HIGH);
       myFile.println((String) millis()+", P"+", 1");
       R1=1;
       ArithmeticConstantSum1=ArithmeticConstantSum1 + ArithmeticConstant;
@@ -216,7 +225,8 @@ drug=1;
         L1=1;
       }
       delay(Puffmiliseconds);
-      digitalWrite(vape1,LOW);
+       
+      digitalWrite(vapeR1,LOW);
       myFile.println((String) millis()+", xp"+", 1");
       PostResponseTimeOutExecution();  //post Response time out need to be a counter because is neccesary to record the wheel spins 
       Numpuffcounter=Numpuffcounter + 1;
@@ -226,7 +236,8 @@ drug=1;
     if(W2Turn>= ArithmeticConstantSum2){
       W2Turn=0;
       previousSessionTimeout = millis();
-      digitalWrite(vape2,HIGH);
+      digitalWrite(vape2,HIGH); 
+      digitalWrite(vapeR2,HIGH);
       myFile.println((String) millis()+", P"+", 2");
       R2=1;
       ArithmeticConstantSum2=ArithmeticConstantSum2 + ArithmeticConstant;
@@ -241,7 +252,8 @@ drug=1;
         L2=1;
       }
       delay(Puffmiliseconds);
-      digitalWrite(vape2,LOW);
+      digitalWrite(vape2,LOW); 
+      digitalWrite(vapeR2,LOW);
       myFile.println((String) millis()+", xp"+", 2"); 
       PostResponseTimeOutExecution();
       Numpuffcounter=Numpuffcounter + 1;
@@ -268,6 +280,8 @@ drug=1;
 
 
 void GeometricRatioStart(){
+  SDini();
+  digitalWrite(SDcs,LOW);
   delay(300);
   W1Turn=0;
   W2Turn=0;
@@ -289,7 +303,7 @@ void GeometricRatioStart(){
   RTCDateTime();
   myFile.println((String)"USER:,"+username);
   myFile.println((String)"Drug:,"+drugname);
-  myFile.println((String)"Animal:,"+animalnameactive);
+  myFile.println((String)"Animal in Chamber:,"+animalnameactive);
   
   myFile.println("Schedule:,Geometric Ratio");
   
@@ -350,7 +364,8 @@ drug=1;
     if(W1Turn>= WG1){
      W1Turn=0;
      previousSessionTimeout = millis();
-      digitalWrite(vape1,HIGH);
+      digitalWrite(vape1,HIGH); 
+      digitalWrite(vapeR1,HIGH);
       myFile.println((String) millis()+", P"+", 1");
       R1 = 1;
       RG1 = RG1 + 1;
@@ -369,7 +384,8 @@ drug=1;
         L1=1;
       }
       delay(Puffmiliseconds);
-      digitalWrite(vape1,LOW);
+      digitalWrite(vape1,LOW); 
+      digitalWrite(vapeR1,LOW);
       myFile.println((String) millis()+", xp"+", 1");
       PostResponseTimeOutExecution();  //post Response time out need to be a counter because is neccesary to record the wheel spins 
       Numpuffcounter=Numpuffcounter + 1;
@@ -379,7 +395,8 @@ drug=1;
     if(W2Turn>= WG2){
       W2Turn=0;
       previousSessionTimeout = millis();
-      digitalWrite(vape2,HIGH);
+      digitalWrite(vape2,HIGH); 
+      digitalWrite(vapeR2,HIGH);
       myFile.println((String) millis()+", P"+", 2");
       R2=1;
       RG2=RG2 + 1;
@@ -396,7 +413,8 @@ drug=1;
         L2=1;
       }
       delay(Puffmiliseconds);
-      digitalWrite(vape2,LOW);
+      digitalWrite(vape2,LOW); 
+      digitalWrite(vapeR2,LOW);
       myFile.println((String) millis()+", xp"+", 2"); 
       PostResponseTimeOutExecution();
       Numpuffcounter=Numpuffcounter + 1;

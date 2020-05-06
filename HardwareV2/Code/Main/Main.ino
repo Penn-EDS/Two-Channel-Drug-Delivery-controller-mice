@@ -70,7 +70,7 @@ uint8_t MyParser::KeyToAscii(bool upper, uint8_t mod, uint8_t key) {
   // Letters
   if (VALUE_WITHIN(key, 0x04, 0x1d)) {
     if (upper) return (key - 4 + 'A');
-     else return (key - 4 + 'a');
+     else return (key - 4 + 'A');
   }
 
   // Numbers
@@ -110,8 +110,10 @@ int BC = 6; // Button C to pin 6
 int BD = 5; // Button D to pin 5
 int BA = 4; // Button A to pin 4
 
-int vape1=23;   // Pin 13 assigned to vape1 signal
-int vape2=2;  // Pin 2 assigned to vape2 signal
+int vape1=23;   // Pin 23 assigned to vape1 signal
+int vapeR1=24;  //Pin for reference out of the box
+int vape2=2;    // Pin 2 assigned to vape2 signal
+int vapeR2=25;   //Pin for reference out of the box
 int LED1=12;   // LED1
 int LED2=11;   // LED2
 
@@ -170,7 +172,7 @@ unsigned long puffIntcounter=0;
 // Active mode variables with default values
 int primingpuff = 1;            //  1 YES   0 NO
 int whichvapepriming = 1;       // if priming yes, Which one?
-int vapepriming=0;              // variable part of the which priming loop
+int vapepriming=vape1;              // variable part of the which priming loop
 int LEDpriming=0;               // variable part of the which priming loop
 int LEDstatuspriming=0;         // variable part of the which priming loop
 
@@ -224,6 +226,8 @@ void setup()
     pinMode(BD,INPUT_PULLUP); // button D
     pinMode(vape1,OUTPUT);    // vape 1 pin 23 
     pinMode(vape2,OUTPUT);    // vape 2 pin 2
+    pinMode(vapeR1,OUTPUT);    // vape1 reference pin 24
+    pinMode(vapeR2,OUTPUT);    // vape2 reference pin 25
     pinMode(LED1,OUTPUT);
     pinMode(LED2,OUTPUT);
     pinMode(USBcs,OUTPUT);
@@ -308,7 +312,7 @@ void setup()
 
 
 //---------USB host initialization--------
-          digitalWrite(SDcs,HIGH);
+          
           digitalWrite(USBcs,LOW);
         
           if (Usb.Init() == -1) {
@@ -320,39 +324,14 @@ void setup()
           Hid.SetReportParser(0, &Parser);
         
           digitalWrite(USBcs,HIGH);
-          digitalWrite(SDcs,HIGH);
+          
         //--------USB initialization Done-------
         
           delay(100);
           
-        //------SD card initialization------------   
-          SDcounter=millis();
-          while(!SD.begin(SDcs)){
-            
-            
-            if (millis()-SDcounter >= 3000) {
-            LCDclear();
-            LCDHome();
-            lcd.print("SD failed!");
-            LCDSetCursorPosition(1,2);
-            lcd.print("Check SD Card");
-            LCDSetCursorPosition(1,3);
-            lcd.print("Or Restart Device");
-            LCDSetCursorPosition(1,4);
-            lcd.print("Or Call EDS_UPENN");
-            //while(1);
-             }
-             
-             
-          }
-
-            //LCDclear();
-            //LCDHome();
-            //lcd.print("SD Done.");
-            //delay(2000);
+        //------SD card initialization------------ 
+       SDini();
           
-          digitalWrite(SDcs,HIGH);
-          digitalWrite(USBcs,LOW);
          //------SD card initialization DONE------------ 
 
 }
