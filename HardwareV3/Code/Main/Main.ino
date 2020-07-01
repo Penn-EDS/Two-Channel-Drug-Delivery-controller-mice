@@ -111,7 +111,9 @@ int BD = 5; // Button D to pin 5
 int BA = 4; // Button A to pin 4
 
 int vape1=23;   // Pin 13 assigned to vape1 signal
+int vape1mirror=24; //Jessica request for vape signal
 int vape2=2;  // Pin 2 assigned to vape2 signal
+int vape2mirror=27; //Jessica request for vape signal
 int LED1=12;   // LED1
 int LED2=11;   // LED2
 
@@ -171,6 +173,7 @@ unsigned long puffIntcounter=0;
 int primingpuff = 1;            //  1 YES   0 NO
 int whichvapepriming = 1;       // if priming yes, Which one?
 int vapepriming=0;              // variable part of the which priming loop
+int vapeprimingmirror=0;
 int LEDpriming=0;               // variable part of the which priming loop
 int LEDstatuspriming=0;         // variable part of the which priming loop
 
@@ -222,8 +225,10 @@ void setup()
     pinMode(BB,INPUT_PULLUP); // button B
     pinMode(BC,INPUT_PULLUP); // button C
     pinMode(BD,INPUT_PULLUP); // button D
-    pinMode(vape1,OUTPUT);    // vape 1 pin 23 
+    pinMode(vape1,OUTPUT);    // vape 1 pin 23
+    pinMode(vape1mirror,OUTPUT); 
     pinMode(vape2,OUTPUT);    // vape 2 pin 2
+    pinMode(vape2mirror,OUTPUT); 
     pinMode(LED1,OUTPUT);
     pinMode(LED2,OUTPUT);
     pinMode(USBcs,OUTPUT);

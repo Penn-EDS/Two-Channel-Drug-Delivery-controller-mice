@@ -69,10 +69,14 @@ while(Numpuffcounter <= PuffMaxQuantity){   //  passive vaping code
   }
 
   digitalWrite(vape1,HIGH);
+  digitalWrite(vape1mirror,HIGH);
   digitalWrite(vape2,HIGH);
+  digitalWrite(vape2mirror,HIGH);
   delay(Puffmiliseconds);
   digitalWrite(vape1,LOW);
-  digitalWrite(vape2, LOW);
+  digitalWrite(vape1mirror,LOW);
+  digitalWrite(vape2,LOW);
+  digitalWrite(vape2mirror,LOW);
   
   puffIntcounter=0;
   

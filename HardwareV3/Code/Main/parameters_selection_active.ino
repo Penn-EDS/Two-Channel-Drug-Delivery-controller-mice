@@ -823,6 +823,7 @@ void Whichvapepriming(){
     if (ButtonDstate == LOW) {
       whichvapepriming=1;
       vapepriming=vape1;
+      vapeprimingmirror=vape1mirror;
       LEDpriming=LED1;
       LEDstatuspriming=LED1status;
       LCDclear();            
@@ -839,6 +840,7 @@ void Whichvapepriming(){
     if (ButtonDstate == HIGH) {
       whichvapepriming=2;
       vapepriming=vape2;
+      vapeprimingmirror=vape2mirror;
       LEDpriming=LED2;
       LEDstatuspriming=LED2status;
       LCDclear();            

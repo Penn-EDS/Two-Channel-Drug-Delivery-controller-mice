@@ -68,6 +68,7 @@ drug=1;
     if(W1Turn>= fixedresponseratio){
      W1Turn=0;
       digitalWrite(vape1,HIGH);
+      digitalWrite(vape1mirror,HIGH);
       myFile.println((String) millis()+", P"+", 1");
       R1=1;
       
@@ -78,6 +79,7 @@ drug=1;
       }
       delay(Puffmiliseconds);
       digitalWrite(vape1,LOW);
+      digitalWrite(vape1mirror,LOW);
       myFile.println((String) millis()+", xp"+", 1");
       PostResponseTimeOutExecution();  //post Response time out need to be a counter because is neccesary to record the wheel spins 
       Numpuffcounter=Numpuffcounter + 1;
@@ -87,6 +89,7 @@ drug=1;
     if(W2Turn>= fixedresponseratio){
       W2Turn=0;
       digitalWrite(vape2,HIGH);
+      digitalWrite(vape2mirror,HIGH);
       myFile.println((String) millis()+", P"+", 2");
       R2=1;
       
@@ -97,6 +100,7 @@ drug=1;
       }
       delay(Puffmiliseconds);
       digitalWrite(vape2,LOW);
+      digitalWrite(vape2mirror,LOW);
       myFile.println((String) millis()+", xp"+", 2"); 
       PostResponseTimeOutExecution();
       Numpuffcounter=Numpuffcounter + 1;
@@ -202,6 +206,7 @@ drug=1;
      W1Turn=0;
      previousSessionTimeout = millis();
       digitalWrite(vape1,HIGH);
+      digitalWrite(vape1mirror,HIGH);
       myFile.println((String) millis()+", P"+", 1");
       R1=1;
       ArithmeticConstantSum1=ArithmeticConstantSum1 + ArithmeticConstant;
@@ -217,6 +222,7 @@ drug=1;
       }
       delay(Puffmiliseconds);
       digitalWrite(vape1,LOW);
+      digitalWrite(vape1mirror,LOW);
       myFile.println((String) millis()+", xp"+", 1");
       PostResponseTimeOutExecution();  //post Response time out need to be a counter because is neccesary to record the wheel spins 
       Numpuffcounter=Numpuffcounter + 1;
@@ -227,6 +233,7 @@ drug=1;
       W2Turn=0;
       previousSessionTimeout = millis();
       digitalWrite(vape2,HIGH);
+      digitalWrite(vape2mirror,HIGH);
       myFile.println((String) millis()+", P"+", 2");
       R2=1;
       ArithmeticConstantSum2=ArithmeticConstantSum2 + ArithmeticConstant;
@@ -242,6 +249,7 @@ drug=1;
       }
       delay(Puffmiliseconds);
       digitalWrite(vape2,LOW);
+      digitalWrite(vape2mirror,LOW);
       myFile.println((String) millis()+", xp"+", 2"); 
       PostResponseTimeOutExecution();
       Numpuffcounter=Numpuffcounter + 1;
@@ -351,6 +359,7 @@ drug=1;
      W1Turn=0;
      previousSessionTimeout = millis();
       digitalWrite(vape1,HIGH);
+      digitalWrite(vape1mirror,HIGH);
       myFile.println((String) millis()+", P"+", 1");
       R1 = 1;
       RG1 = RG1 + 1;
@@ -370,6 +379,7 @@ drug=1;
       }
       delay(Puffmiliseconds);
       digitalWrite(vape1,LOW);
+      digitalWrite(vape1mirror,LOW);
       myFile.println((String) millis()+", xp"+", 1");
       PostResponseTimeOutExecution();  //post Response time out need to be a counter because is neccesary to record the wheel spins 
       Numpuffcounter=Numpuffcounter + 1;
@@ -380,6 +390,7 @@ drug=1;
       W2Turn=0;
       previousSessionTimeout = millis();
       digitalWrite(vape2,HIGH);
+      digitalWrite(vape2mirror,HIGH);
       myFile.println((String) millis()+", P"+", 2");
       R2=1;
       RG2=RG2 + 1;
@@ -397,6 +408,7 @@ drug=1;
       }
       delay(Puffmiliseconds);
       digitalWrite(vape2,LOW);
+      digitalWrite(vape2mirror,LOW);
       myFile.println((String) millis()+", xp"+", 2"); 
       PostResponseTimeOutExecution();
       Numpuffcounter=Numpuffcounter + 1;
@@ -464,6 +476,7 @@ void PrimingExecution(){
   if(primingpuff==1){
     drug=1;
       digitalWrite(vapepriming,HIGH);
+      digitalWrite(vapeprimingmirror,HIGH);
       myFile.println((String) millis()+", P"+", "+whichvapepriming);
       digitalWrite(LEDpriming,LEDstatuspriming);
       if(LEDstatuspriming==1){
@@ -471,6 +484,7 @@ void PrimingExecution(){
       }
       delay(Puffmiliseconds);
       digitalWrite(vapepriming,LOW);
+      digitalWrite(vapeprimingmirror,LOW);
       digitalWrite(LEDpriming,LOW);
       myFile.println((String) millis()+", xp"+", "+whichvapepriming);
       myFile.println((String) millis()+", xs"+", "+whichvapepriming);
