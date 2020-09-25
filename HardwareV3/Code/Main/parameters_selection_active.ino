@@ -812,11 +812,12 @@ void Whichvapepriming(){
     lcd.print("PRESS D For 1 or 2");
     LCDSetCursorPosition(1,4);
     lcd.print("PRESS C for OK");
-    
-   //ButtonC = digitalRead(BC);
-  while ( digitalRead(BC)==HIGH){ 
+
+    //ButtonC = digitalRead(BC);
+  while ( digitalRead(BC) == HIGH){
     delay(200);
-    //ButtonD = digitalRead(BD);
+  // ButtonD = digitalRead(BD);
+  
   if (digitalRead(BD) == LOW) {
     //delay(200);
     ButtonDstate = !ButtonDstate; //state start in 0
@@ -828,7 +829,8 @@ void Whichvapepriming(){
       LEDstatuspriming=LED1status;
       LCDclear();            
       LCDHome();
-      lcd.print("Which Vape priming?");
+      lcd.print("Which Vape priming? LOW");
+  //    lcd.print("Which VLOW priming?");
       LCDSetCursorPosition(2,2);
       lcd.print((String)"Vaporizer:"+ whichvapepriming);
       LCDSetCursorPosition(1,3);
@@ -846,6 +848,7 @@ void Whichvapepriming(){
       LCDclear();            
       LCDHome();
       lcd.print("Which Vape priming?");
+  //  lcd.print("Which VHIGH priming?");
       LCDSetCursorPosition(2,2);
       lcd.print((String)"Vaporizer:"+ whichvapepriming);
       LCDSetCursorPosition(1,3);
