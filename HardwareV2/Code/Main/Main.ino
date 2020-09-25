@@ -1,3 +1,4 @@
+// hardware2
 #include "RTClib.h"
 #include "Arduino.h"
 #define lcd Serial1 // with lcd serial1
@@ -110,8 +111,10 @@ int BC = 6; // Button C to pin 6
 int BD = 5; // Button D to pin 5
 int BA = 4; // Button A to pin 4
 
-int vape1=23;   // Pin 13 assigned to vape1 signal
-int vape2=2;  // Pin 2 assigned to vape2 signal
+int vape1=23;   // Pin 23 assigned to vape1 signal
+int vapeR1=24;  //Pin for reference out of the box
+int vape2=2;    // Pin 2 assigned to vape2 signal
+int vapeR2=25;   //Pin for reference out of the box
 int LED1=12;   // LED1
 int LED2=11;   // LED2
 
@@ -170,9 +173,9 @@ unsigned long puffIntcounter=0;
 // Active mode variables with default values
 int primingpuff = 1;            //  1 YES   0 NO
 int whichvapepriming = 1;       // if priming yes, Which one?
-int vapepriming=0;              // variable part of the which priming loop
-int LEDpriming=0;               // variable part of the which priming loop
-int LEDstatuspriming=0;         // variable part of the which priming loop
+int vapepriming=vape1;              // variable part of the which priming loop  was 0 changed today 6 may 2020
+int LEDpriming=LED1;               // variable part of the which priming loop    was 0 changed today 6 may 2020
+int LEDstatuspriming=1;         // variable part of the which priming loop      
 
 int whichvapeactive=1;
 
@@ -224,6 +227,8 @@ void setup()
     pinMode(BD,INPUT_PULLUP); // button D
     pinMode(vape1,OUTPUT);    // vape 1 pin 23 
     pinMode(vape2,OUTPUT);    // vape 2 pin 2
+    pinMode(vapeR1,OUTPUT);    // vape1 reference pin 24
+    pinMode(vapeR2,OUTPUT);    // vape2 reference pin 25
     pinMode(LED1,OUTPUT);
     pinMode(LED2,OUTPUT);
     pinMode(USBcs,OUTPUT);
@@ -296,7 +301,7 @@ void setup()
           LCDSetCursorPosition(1,2);
           lcd.print("Call EDS_UPENN");
           rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));
-           while (1);
+           //while (1);
          }
 
   //Use one of this to Function to set the date/time of the RTC. After uplouding the code, COMMENT this two lines and RE-Upload the CODE. 
@@ -308,7 +313,11 @@ void setup()
 
 
 //---------USB host initialization--------
+<<<<<<< HEAD
           digitalWrite(SDcs,HIGH);
+=======
+          
+>>>>>>> 0322479833a051ad17614f3729ca344d5703778d
           digitalWrite(USBcs,LOW);
         
           if (Usb.Init() == -1) {
@@ -320,11 +329,12 @@ void setup()
           Hid.SetReportParser(0, &Parser);
         
           digitalWrite(USBcs,HIGH);
-          digitalWrite(SDcs,LOW);
+          
         //--------USB initialization Done-------
         
           delay(100);
           
+<<<<<<< HEAD
         //------SD card initialization------------   
           SDcounter=millis();
           while(!SD.begin(SDcs)){
@@ -351,6 +361,11 @@ void setup()
           
           digitalWrite(SDcs,HIGH);
           digitalWrite(USBcs,LOW);
+=======
+        //------SD card initialization------------ 
+         //SDini();
+          
+>>>>>>> 0322479833a051ad17614f3729ca344d5703778d
          //------SD card initialization DONE------------ 
 
 }
@@ -410,6 +425,10 @@ void loop() {
           LCDHome();
           lcd.print(" PRESS: A to Review ");
           lcd.print(" PRESS: B to Start ");
+          LCDSetCursorPosition(1,3);
+          lcd.print("    Last Chance!");
+          LCDSetCursorPosition(1,4);
+          lcd.print("  Are mice in Box?");
           while(1){
               delay(200);
               
@@ -438,13 +457,13 @@ void loop() {
            delay(200);
            whichvapeActive();
            delay(200);
-           Primingpuff();
-           delay(200);
            PuffLengthselect();
            delay(200);
            PostResponseTimeOut();
            delay(200);
            CueLight();
+           delay(200);
+           Primingpuff();
            delay(200);
            sessionLength();
            delay(200);
@@ -478,6 +497,12 @@ void loop() {
                 LCDHome();
                 lcd.print(" PRESS: A to Review ");
                 lcd.print(" PRESS: B to Start ");
+                LCDSetCursorPosition(1,3);
+                lcd.print("    Last Chance!");
+                LCDSetCursorPosition(1,4);
+                lcd.print("  Are mice in Box?");
+                
+                
                 while(1){
                    delay(200);
                    
@@ -525,6 +550,12 @@ void loop() {
                       LCDHome();
                       lcd.print(" PRESS: A to Review ");
                       lcd.print(" PRESS: B to Start ");
+                      LCDSetCursorPosition(1,3);
+                      lcd.print("    Last Chance!");
+                      LCDSetCursorPosition(1,4);
+                      lcd.print("  Are mice in Box?");
+                      
+                      
                       while(1){
                        delay(200);
                    
@@ -553,6 +584,10 @@ void loop() {
                       LCDHome();
                       lcd.print(" PRESS: A to Review ");
                       lcd.print(" PRESS: B to Start ");
+                      LCDSetCursorPosition(1,3);
+                      lcd.print("    Last Chance!");
+                      LCDSetCursorPosition(1,4);
+                      lcd.print("  Are mice in Box?");
                       while(1){
                        delay(200);
                    

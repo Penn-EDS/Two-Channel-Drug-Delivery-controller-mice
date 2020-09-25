@@ -207,3 +207,36 @@ void getFilename(char *filename) {
   
   
 }
+
+void SDini(){
+  LCDclear();
+  LCDHome();
+  lcd.print("Verifying... SD");
+   digitalWrite(SDcs,LOW);  
+    SDcounter=millis();
+    while(!SD.begin(SDcs)){
+      
+      
+      if (millis()-SDcounter >= 3000) {
+      LCDclear();
+      LCDHome();
+      lcd.print("SD failed!");
+      LCDSetCursorPosition(1,2);
+      lcd.print("Check SD Card");
+      LCDSetCursorPosition(1,3);
+      lcd.print("Or Restart Device");
+      LCDSetCursorPosition(1,4);
+      lcd.print("Or Call EDS_UPENN");
+      //while(1);
+       }
+       
+       
+    }
+
+      //LCDclear();
+      //LCDHome();
+      //lcd.print("SD Done.");
+      //delay(2000);
+    
+    digitalWrite(SDcs,HIGH);
+}

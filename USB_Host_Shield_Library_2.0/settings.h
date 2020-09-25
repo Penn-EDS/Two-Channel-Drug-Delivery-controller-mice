@@ -153,7 +153,9 @@ e-mail   :  support@circuitsathome.com
 #define MFK_CASTUINT8T (uint8_t) // RBLs return type for sizeof needs casting to uint8_t
 #endif
 #if defined(__PIC32MX__) || defined(__PIC32MZ__)
-#include <../../../../hardware/pic32/libraries/SPI/SPI.h> // Hack to use the SPI library
+//#include <../../../../hardware/pic32/libraries/SPI/SPI.h> // Hack to use the SPI library
+//#include <Arduino15/packages/chipKIT/hardware/pic32/libraries/SPI/SPI.h>
+#include <pic32/2.1.0/libraries/SPI/SPI.h> // Hack to use the SPI library
 #endif
 
 #if defined(ESP8266) || defined(ESP32)
