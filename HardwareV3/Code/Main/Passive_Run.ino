@@ -39,7 +39,7 @@ ButtonB=digitalRead(BB);
       LCDHome();
       lcd.print("Experiment Cancel");
       myFile.println("THIS SESSION WAS CANCELLED");
-    delay(2000);
+    delay(1000);
     goto cancelpassive;
   }
 puffIntinmiliseconds=(PuffIntmin*60*1000)+(PuffIntsec*1000);
@@ -64,7 +64,7 @@ while(Numpuffcounter <= PuffMaxQuantity){   //  passive vaping code
       LCDHome();
       lcd.print("Experiment Cancel");
       myFile.println("THIS SESSION WAS CANCELLED");
-    delay(2000);
+    delay(1000);
     goto cancelpassive;
   }
 
@@ -89,7 +89,7 @@ while(Numpuffcounter <= PuffMaxQuantity){   //  passive vaping code
       LCDHome();
       lcd.print("Experiment Cancel");
       myFile.println("THIS SESSION WAS CANCELLED");
-    delay(2000);
+    delay(1000);
     goto cancelpassive;
   }
     
@@ -133,7 +133,7 @@ void fivemincleaning(){
         LCDclear();
         LCDHome();
         lcd.print("Cleaning Cancel");
-        delay(2000);
+        delay(1000);
         goto cancelcleaning;
          }
       }

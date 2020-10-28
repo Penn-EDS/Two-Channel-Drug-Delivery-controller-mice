@@ -172,10 +172,10 @@ unsigned long puffIntcounter = 0;
 // Active mode variables with default values
 int primingpuff = 1;            //  1 YES   0 NO
 int whichvapepriming = 1;       // if priming yes, Which one?
-int vapepriming = 0;            // variable part of the which priming loop
-int vapeprimingmirror = 0;
-int LEDpriming = 0;             // variable part of the which priming loop
-int LEDstatuspriming = 0;       // variable part of the which priming loop
+int vapepriming = vape1 ;            // variable part of the which priming loop
+int vapeprimingmirror = vape1mirror;
+int LEDpriming = LED1;             // variable part of the which priming loop
+int LEDstatuspriming = 1;       // variable part of the which priming loop
 
 int whichvapeactive = 1;
 

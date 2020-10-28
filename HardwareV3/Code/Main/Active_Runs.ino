@@ -82,7 +82,9 @@ drug=1;
       digitalWrite(vape1mirror,LOW);
       myFile.println((String) millis()+", xp"+", 1");
       PostResponseTimeOutExecution();  //post Response time out need to be a counter because is neccesary to record the wheel spins 
-      Numpuffcounter=Numpuffcounter + 1;
+      if(whichvapeactive==1){
+        Numpuffcounter=Numpuffcounter + 1;
+      }
      }
 
 
@@ -103,7 +105,9 @@ drug=1;
       digitalWrite(vape2mirror,LOW);
       myFile.println((String) millis()+", xp"+", 2"); 
       PostResponseTimeOutExecution();
-      Numpuffcounter=Numpuffcounter + 1;
+      if(whichvapeactive==2){
+        Numpuffcounter=Numpuffcounter + 1;
+      }
     }
   
 
@@ -118,7 +122,7 @@ drug=1;
    lcd.print("     CANCELLED     ");
    myFile.println("THIS SESSION WAS CANCELLED");
    myFile.close();
-   delay(3000);
+   delay(1000);
   }
   myFile.close();
 }
@@ -225,7 +229,9 @@ drug=1;
       digitalWrite(vape1mirror,LOW);
       myFile.println((String) millis()+", xp"+", 1");
       PostResponseTimeOutExecution();  //post Response time out need to be a counter because is neccesary to record the wheel spins 
-      Numpuffcounter=Numpuffcounter + 1;
+      if(whichvapeactive==1){
+        Numpuffcounter=Numpuffcounter + 1;
+      }
      }
 
 
@@ -252,7 +258,9 @@ drug=1;
       digitalWrite(vape2mirror,LOW);
       myFile.println((String) millis()+", xp"+", 2"); 
       PostResponseTimeOutExecution();
-      Numpuffcounter=Numpuffcounter + 1;
+      if(whichvapeactive==2){
+        Numpuffcounter=Numpuffcounter + 1;
+      }
     }
   
 
@@ -267,7 +275,7 @@ drug=1;
    lcd.print("     CANCELLED     ");
    myFile.println("THIS SESSION WAS CANCELLED");
    myFile.close();
-   delay(3000);
+   delay(1000);
   }
   myFile.close();
 }
@@ -382,7 +390,9 @@ drug=1;
       digitalWrite(vape1mirror,LOW);
       myFile.println((String) millis()+", xp"+", 1");
       PostResponseTimeOutExecution();  //post Response time out need to be a counter because is neccesary to record the wheel spins 
-      Numpuffcounter=Numpuffcounter + 1;
+      if(whichvapeactive==1){
+        Numpuffcounter=Numpuffcounter + 1;
+      }
      }
 
 
@@ -411,7 +421,9 @@ drug=1;
       digitalWrite(vape2mirror,LOW);
       myFile.println((String) millis()+", xp"+", 2"); 
       PostResponseTimeOutExecution();
-      Numpuffcounter=Numpuffcounter + 1;
+      if(whichvapeactive==2){
+        Numpuffcounter=Numpuffcounter + 1;
+      }
     }
   
 
@@ -426,7 +438,7 @@ drug=1;
    lcd.print("     CANCELLED     ");
    myFile.println("THIS SESSION WAS CANCELLED");
    myFile.close();
-   delay(3000);
+   delay(1000);
   }
  myFile.close();
 }
