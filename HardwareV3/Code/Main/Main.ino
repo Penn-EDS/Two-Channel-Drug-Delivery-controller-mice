@@ -1,3 +1,8 @@
+//Version 3.1: 
+//  Reduce the cancel session LCD print from 3 seconds to 1 second
+//  Max number of puff in the active sesssions, just active vape will count
+//  Primming puff issue solved. Problem with the initialization of variables.
+#define VER "FW Ver 3.1"
 #include "RTClib.h"
 #include "Arduino.h"
 #define lcd Serial1 // with lcd serial1
@@ -13,7 +18,7 @@ RTC_DS1307 rtc;
 File myFile;
 
 char filename[15];//array for the file name
-int device = 02;       // up to 99 devices
+int device = 04;       // up to 99 devices
 const int SDcs = 22;  //SD slave pin
 const int USBcs = 10; //USB slave pin
 int SDcounter = 0;
@@ -274,6 +279,7 @@ void setup()
   LCDSetCursorPosition(1, 3);
   lcd.print("Monitoring Device");
   LCDSetCursorPosition(1, 4);
+  lcd.print(VER);
   delay(3000);
 
   // Move Cursor. For forware Write "F" and for Back Write "B"
