@@ -24,11 +24,11 @@ if ((Wheel1State=digitalRead(W1)) == lastWheel1State){
  if (W1Step==Step){
     W1Step=0;
     W1Turn=W1Turn +1;
-   if(W1Turn != SpinNottriggercheck || W1Turn==1 && SpinNottriggercheck==1){
+   //if(W1Turn != SpinNottriggercheck || W1Turn==1 && SpinNottriggercheck==1){
     myFile.println((String) millis()+", R"+", 1");
     R1=1;
 
-    }
+    //}
     
    
   }
@@ -57,10 +57,10 @@ if ((Wheel2State=digitalRead(W2)) == lastWheel2State){
 if (W2Step==Step){
     W2Step=0;
     W2Turn=W2Turn +1;
-   if(W2Turn != SpinNottriggercheck || W2Turn==1 && SpinNottriggercheck==1){
+   //if(W2Turn != SpinNottriggercheck || W2Turn==1 && SpinNottriggercheck==1){
      myFile.println((String) millis()+", R"+", 2");
      R2=1;
-    }
+    //}
  
   }
 
