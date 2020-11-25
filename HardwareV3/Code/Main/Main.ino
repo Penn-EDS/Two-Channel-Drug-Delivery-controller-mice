@@ -2,7 +2,9 @@
 //  Reduce the cancel session LCD print from 3 seconds to 1 second
 //  Max number of puff in the active sesssions, just active vape will count
 //  Primming puff issue solved. Problem with the initialization of variables.
-#define VER "FW Ver 3.1"
+//Version 3.2:
+//  ADD LED HOUSE (LED for the chamber). LED turn ON when Active Session START, and OFF when Active session ENDS
+#define VER "FW Ver 3.2"
 #include "RTClib.h"
 #include "Arduino.h"
 #define lcd Serial1 // with lcd serial1
@@ -18,7 +20,7 @@ RTC_DS1307 rtc;
 File myFile;
 
 char filename[15];//array for the file name
-int device = 04;       // up to 99 devices
+int device = 06;       // up to 99 devices
 const int SDcs = 22;  //SD slave pin
 const int USBcs = 10; //USB slave pin
 int SDcounter = 0;
@@ -218,6 +220,10 @@ unsigned long RG2 = 1;
 unsigned long WG1 = 1;
 unsigned long WG2 = 1;
 
+int LEDHBright=10;
+int LEDHbit = 0;
+int LEDHpin=45;
+
 void setup()
 {
 
@@ -238,6 +244,7 @@ void setup()
   pinMode(LED2, OUTPUT);
   pinMode(USBcs, OUTPUT);
   pinMode(SDcs, OUTPUT);
+  pinMode(LEDHpin, OUTPUT);
 
   digitalWrite(SDcs, HIGH);
   digitalWrite(USBcs, HIGH);
@@ -446,6 +453,8 @@ Activereview:
       DrugName();
       delay(200);
       AnimalNameActive();
+      delay(200);
+      LEDHouseBright();
       delay(200);
       whichvapeActive();
       delay(200);

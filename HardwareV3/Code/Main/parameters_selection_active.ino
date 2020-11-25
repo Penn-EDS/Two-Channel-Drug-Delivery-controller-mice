@@ -979,3 +979,76 @@ void IFSessionTimeOut(){
     SessionTimeOutmilis=SessionLengthInMiliseconds + 15000;
      }
 }
+
+void LEDHouseBright(){ //LEDHBright=....
+
+  LCDclear();
+  LCDHome();
+  lcd.print("LED HOUSE BRIGNESS");
+  LCDSetCursorPosition(1, 2);
+  lcd.print("PERCENTAGE: ");
+  lcd.print(LEDHBright);
+  LCDSetCursorPosition(1, 3);
+  lcd.print("PRESS: A(+) , B(-)");
+  LCDSetCursorPosition(1, 4);
+  lcd.print("PRESS C for OK");
+  delay(100);
+  
+  while ( digitalRead(BC) == HIGH) {
+    delay(100);
+    if ( digitalRead(BA) == LOW) {
+      LEDHBright = LEDHBright + 5;
+      LCDclear();
+      LCDHome();
+      lcd.print("LED HOUSE BRIGNESS");
+      LCDSetCursorPosition(1, 2);
+      lcd.print("PERCENTAGE: ");
+      lcd.print(LEDHBright);
+      LCDSetCursorPosition(1, 3);
+      lcd.print("PRESS: A(+) , B(-)");
+      LCDSetCursorPosition(1, 4);
+      lcd.print("PRESS C for OK");
+      if (LEDHBright >= 100) {
+        LEDHBright = 100;
+        LCDclear();
+        LCDHome();
+        lcd.print("LED HOUSE BRIGNESS");
+        LCDSetCursorPosition(1, 2);
+        lcd.print("PERCENTAGE: ");
+        lcd.print(LEDHBright);
+        LCDSetCursorPosition(1, 3);
+        lcd.print("PRESS: A(+) , B(-)");
+        LCDSetCursorPosition(1, 4);
+        lcd.print("PRESS C for OK");
+      }      
+    }
+ 
+    if ( digitalRead(BB) == LOW) {
+      LEDHBright = LEDHBright - 5;
+      LCDclear();
+      LCDHome();
+      lcd.print("LED HOUSE BRIGNESS");
+      LCDSetCursorPosition(1, 2);
+      lcd.print("PERCENTAGE: ");
+      lcd.print(LEDHBright);
+      LCDSetCursorPosition(1, 3);
+      lcd.print("PRESS: A(+) , B(-)");
+      LCDSetCursorPosition(1, 4);
+      lcd.print("PRESS C for OK");
+      if (LEDHBright <= 0) {
+        LEDHBright = 0;
+        LCDclear();
+        LCDHome();
+        lcd.print("LED HOUSE BRIGNESS");
+        LCDSetCursorPosition(1, 2);
+        lcd.print("PERCENTAGE: ");
+        lcd.print(LEDHBright);
+        LCDSetCursorPosition(1, 3);
+        lcd.print("PRESS: A(+) , B(-)");
+        LCDSetCursorPosition(1, 4);
+        lcd.print("PRESS C for OK");
+      }
+    } 
+  }
+ LEDHbit=map(LEDHBright,0,100,0,255);
+}

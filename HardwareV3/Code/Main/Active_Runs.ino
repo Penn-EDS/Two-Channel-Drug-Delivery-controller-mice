@@ -54,6 +54,7 @@ myFile.println("----------------------------");
 myFile.println("TIME(ms), Action, Unit");
  
 SpinNottriggercheck = fixedresponseratio;
+analogWrite(LEDHpin,LEDHbit);
 myFile.println((String) millis()+", B");
  PrimingExecution();
 myFile.println((String) millis()+", T");
@@ -112,6 +113,7 @@ drug=1;
   
 
   }
+ analogWrite(LEDHpin,0); 
  myFile.println((String) millis()+", E");
  
  if(digitalRead(BB)==LOW){
@@ -192,7 +194,7 @@ void ArithmeticRatioStart(){
   
 myFile.println("----------------------------");
 myFile.println("TIME(ms), Action, Unit");
-
+analogWrite(LEDHpin,LEDHbit);
 myFile.println((String) millis()+", B");
  PrimingExecution();
 myFile.println((String) millis()+", T");
@@ -265,6 +267,7 @@ drug=1;
   
 
   }
+ analogWrite(LEDHpin,0);
  myFile.println((String) millis()+", E");
 
  if(digitalRead(BB)==LOW){
@@ -349,7 +352,7 @@ void GeometricRatioStart(){
   
 myFile.println("----------------------------");
 myFile.println("TIME(ms), Action, Unit");
- 
+analogWrite(LEDHpin,LEDHbit);
 myFile.println((String) millis()+", B");
  PrimingExecution();
 myFile.println((String) millis()+", T");
@@ -428,6 +431,7 @@ drug=1;
   
 
   }
+ analogWrite(LEDHpin,0);
  myFile.println((String) millis()+", E");
 
  if(digitalRead(BB)==LOW){
