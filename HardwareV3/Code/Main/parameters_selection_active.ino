@@ -980,13 +980,13 @@ void IFSessionTimeOut(){
      }
 }
 
-void LEDHouseBright(){ //LEDHBright=....
+void LEDHouseBright(){
 
   LCDclear();
   LCDHome();
-  lcd.print("LED HOUSE BRIGNESS");
+  lcd.print("LED HOUSE INTENSITY");
   LCDSetCursorPosition(1, 2);
-  lcd.print("PERCENTAGE: ");
+  lcd.print("PERCENT: ");
   lcd.print(LEDHBright);
   LCDSetCursorPosition(1, 3);
   lcd.print("PRESS: A(+) , B(-)");
@@ -1000,9 +1000,9 @@ void LEDHouseBright(){ //LEDHBright=....
       LEDHBright = LEDHBright + 5;
       LCDclear();
       LCDHome();
-      lcd.print("LED HOUSE BRIGNESS");
+      lcd.print("LED HOUSE INTENSITY");
       LCDSetCursorPosition(1, 2);
-      lcd.print("PERCENTAGE: ");
+      lcd.print("PERCENT: ");
       lcd.print(LEDHBright);
       LCDSetCursorPosition(1, 3);
       lcd.print("PRESS: A(+) , B(-)");
@@ -1012,9 +1012,9 @@ void LEDHouseBright(){ //LEDHBright=....
         LEDHBright = 100;
         LCDclear();
         LCDHome();
-        lcd.print("LED HOUSE BRIGNESS");
+        lcd.print("LED HOUSE INTENSITY");
         LCDSetCursorPosition(1, 2);
-        lcd.print("PERCENTAGE: ");
+        lcd.print("PERCENT: ");
         lcd.print(LEDHBright);
         LCDSetCursorPosition(1, 3);
         lcd.print("PRESS: A(+) , B(-)");
@@ -1027,9 +1027,9 @@ void LEDHouseBright(){ //LEDHBright=....
       LEDHBright = LEDHBright - 5;
       LCDclear();
       LCDHome();
-      lcd.print("LED HOUSE BRIGNESS");
+      lcd.print("LED HOUSE INTENSITY");
       LCDSetCursorPosition(1, 2);
-      lcd.print("PERCENTAGE: ");
+      lcd.print("PERCENT: ");
       lcd.print(LEDHBright);
       LCDSetCursorPosition(1, 3);
       lcd.print("PRESS: A(+) , B(-)");
@@ -1039,9 +1039,9 @@ void LEDHouseBright(){ //LEDHBright=....
         LEDHBright = 0;
         LCDclear();
         LCDHome();
-        lcd.print("LED HOUSE BRIGNESS");
+        lcd.print("LED HOUSE INTENSITY");
         LCDSetCursorPosition(1, 2);
-        lcd.print("PERCENTAGE: ");
+        lcd.print("PERCENT: ");
         lcd.print(LEDHBright);
         LCDSetCursorPosition(1, 3);
         lcd.print("PRESS: A(+) , B(-)");
