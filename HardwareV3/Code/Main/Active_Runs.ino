@@ -16,7 +16,8 @@ void FixedRatioStart(){
   RTCDateTime();
   myFile.println((String)"USER:,"+username);
   myFile.println((String)"Drug:,"+drugname);
-  myFile.println((String)"Animal:,"+animalnameactive);
+  myFile.println((String)"Animal:,"+animalnameactive); 
+  myFile.println((String)"LED House Intensity Percent:,"+LEDHBright);
 
   myFile.println("Schedule:,Fixed Ratio");
   
@@ -151,6 +152,7 @@ void ArithmeticRatioStart(){
   myFile.println((String)"USER:,"+username);
   myFile.println((String)"Drug:,"+drugname);
   myFile.println((String)"Animal:,"+animalnameactive);
+  myFile.println((String)"LED House Intensity Percent:,"+LEDHBright);
   
   myFile.println("Schedule:,Arithmetic Ratio");
   
@@ -309,6 +311,7 @@ void GeometricRatioStart(){
   myFile.println((String)"USER:,"+username);
   myFile.println((String)"Drug:,"+drugname);
   myFile.println((String)"Animal:,"+animalnameactive);
+  myFile.println((String)"LED House Intensity Percent:,"+LEDHBright);
   
   myFile.println("Schedule:,Geometric Ratio");
   

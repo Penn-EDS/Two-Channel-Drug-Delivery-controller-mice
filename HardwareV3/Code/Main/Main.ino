@@ -4,7 +4,9 @@
 //  Primming puff issue solved. Problem with the initialization of variables.
 //Version 3.2:
 //  ADD LED HOUSE (LED for the chamber). LED turn ON when Active Session START, and OFF when Active session ENDS
-#define VER "FW Ver 3.2"
+//Version 3.3:
+//  Add code lines to log LED HOUSE intensity in the SDcard. 
+#define VER "FW Ver 3.3"
 #include "RTClib.h"
 #include "Arduino.h"
 #define lcd Serial1 // with lcd serial1
