@@ -506,7 +506,31 @@ void PrimingExecution(){
       digitalWrite(vapeprimingmirror,LOW);
       digitalWrite(LEDpriming,LOW);
       myFile.println((String) millis()+", xp"+", "+whichvapepriming);
+      PrimingPostResponseTimeOutExecution();
       myFile.println((String) millis()+", xs"+", "+whichvapepriming);
   }
 
+}
+
+void PrimingPostResponseTimeOutExecution(){  //post Response time out need to be a counter because is neccesary to record the wheel spins
+  
+  
+   LCDSetCursorPosition(1,3);
+   lcd.print("                ");
+   LCDSetCursorPosition(1,3);
+   milisleft = SessionLengthInMiliseconds - millis() + previoustime;
+   minutesleft=(float)milisleft/60000.0;
+   lcd.print(minutesleft);
+   
+   
+  previoustime2 = millis();
+  while(millis() - previoustime2 <= Postresponsetimeoutmilis){
+    checkWheelschange();
+    
+    W1Turn=0;
+    W2Turn=0;
+
+    
+  }
+  
 }

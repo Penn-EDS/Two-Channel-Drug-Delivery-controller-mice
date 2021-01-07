@@ -22,7 +22,7 @@ RTC_DS1307 rtc;
 File myFile;
 
 char filename[15];//array for the file name
-int device = 06;       // up to 99 devices
+int device = 01;       // up to 99 devices
 const int SDcs = 22;  //SD slave pin
 const int USBcs = 10; //USB slave pin
 int SDcounter = 0;
@@ -159,7 +159,7 @@ int W2Turn = 0;
 unsigned long wheel2stopcountertimemilis = 0;
 int R2 = 0;
 
-int Step = 8;
+int Step = 2;   // one turn 8 steps (changes)  2 steps= to 1/4 of turn
 unsigned int XrCycles = 10000;
 
 // Passive mode variables with default values
