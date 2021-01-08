@@ -504,9 +504,10 @@ void PrimingExecution(){
       delay(Puffmiliseconds);
       digitalWrite(vapepriming,LOW);
       digitalWrite(vapeprimingmirror,LOW);
-      digitalWrite(LEDpriming,LOW);
+      //digitalWrite(LEDpriming,LOW);
       myFile.println((String) millis()+", xp"+", "+whichvapepriming);
       PrimingPostResponseTimeOutExecution();
+      digitalWrite(LEDpriming,LOW);
       myFile.println((String) millis()+", xs"+", "+whichvapepriming);
   }
 
@@ -521,6 +522,7 @@ void PrimingPostResponseTimeOutExecution(){  //post Response time out need to be
    milisleft = SessionLengthInMiliseconds - millis() + previoustime;
    minutesleft=(float)milisleft/60000.0;
    lcd.print(minutesleft);
+   
    
    
   previoustime2 = millis();
