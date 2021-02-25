@@ -5,8 +5,10 @@
 //Version 3.2:
 //  ADD LED HOUSE (LED for the chamber). LED turn ON when Active Session START, and OFF when Active session ENDS
 //Version 3.3:
-//  Add code lines to log LED HOUSE intensity in the SDcard. 
-#define VER "FW Ver 3.3"
+//  Add code lines to log LED HOUSE intensity in the SDcard.
+//Version 3.31:
+//  change initialization error messages. Change procedure when SDcard is not detected. 
+#define VER "FW Ver 3.31"
 #include "RTClib.h"
 #include "Arduino.h"
 #define lcd Serial1 // with lcd serial1
@@ -22,7 +24,7 @@ RTC_DS1307 rtc;
 File myFile;
 
 char filename[15];//array for the file name
-int device = 01;       // up to 99 devices
+int device = 07;       // up to 99 devices
 const int SDcs = 22;  //SD slave pin
 const int USBcs = 10; //USB slave pin
 int SDcounter = 0;
@@ -304,7 +306,7 @@ void setup()
     LCDSetCursorPosition(1, 2);
     lcd.print("Please Restart");
     LCDSetCursorPosition(1, 3);
-    lcd.print("Or Call EDS_UPENN");
+    lcd.print("Or Contact PENNEDS");
 
     while (1);
   }
@@ -314,7 +316,7 @@ void setup()
     LCDHome();
     lcd.print("RTC is NOT running!");
     LCDSetCursorPosition(1, 2);
-    lcd.print("Call EDS_UPENN");
+    lcd.print("Contact PENNEDS");
     rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));
     while (1);
   }
@@ -330,36 +332,51 @@ void setup()
   //---------USB host initialization--------
   digitalWrite(SDcs, HIGH);
   digitalWrite(USBcs, LOW);
-
+  delay(100);
+  
   if (Usb.Init() == -1) {
     Serial.println("OSC did not start.");
+      LCDclear();
+      LCDHome();
+      lcd.print("USB Scanner failed!");
+      LCDSetCursorPosition(1, 2);
+      lcd.print("Check USB Scanner");
+      LCDSetCursorPosition(1, 3);
+      lcd.print("Restart Device");
+      LCDSetCursorPosition(1, 4);
+      lcd.print("Or Contact PENNEDS");
+      while (1);
   }
 
-  delay( 200 );
+  delay( 100 );
 
   Hid.SetReportParser(0, &Parser);
-
+  
+   delay( 100 );
+   
   digitalWrite(USBcs, HIGH);
   digitalWrite(SDcs, LOW);
   //--------USB initialization Done-------
 
-  delay(500);
+  delay(100);
 
   //------SD card initialization------------
-  SDcounter = millis();
+ LCDclear();
+ LCDHome();
+ lcd.print("SDcard Scanning");
+ SDcounter = millis(); 
   while (!SD.begin(SDcs)) {
 
-    if (millis() - SDcounter >= 3000) {
+    if (millis() - SDcounter >= 4000) {
+      SDcounter = millis();
       LCDclear();
       LCDHome();
       lcd.print("SD failed!");
       LCDSetCursorPosition(1, 2);
-      lcd.print("Check SD Card");
+      lcd.print("Re-insert SD Card");
       LCDSetCursorPosition(1, 3);
-      lcd.print("Restart Device");
-      LCDSetCursorPosition(1, 4);
-      lcd.print("Or Call EDS_UPENN");
-      while (1);
+      lcd.print("SDcard Scanning");
+      
     }
 
   }
@@ -373,6 +390,7 @@ void setup()
   digitalWrite(USBcs, LOW);
   //------SD card initialization DONE------------
 
+   
 }
 
 
